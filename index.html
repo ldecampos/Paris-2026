@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>París & Disney · Agosto 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Serif+Display&display=swap');
+:root{
+  --paris:#1a3a5c;--paris-l:#e8f0f8;--paris-m:#4a7ab5;
+  --disney:#c8860a;--disney-l:#fdf3e0;
+  --go:#1a6b4a;--go-l:#e6f4ef;
+  --warn:#b83232;--warn-l:#fceaea;
+  --neutral:#f5f5f3;--border:#e0ddd8;
+  --text:#1a1a1a;--t2:#555;--t3:#888;
+  --r:12px;--rs:8px;
+  --z1:#3b6cb7;--z1l:#dce8f7;
+  --z2:#7b3fa0;--z2l:#eedff5;
+  --z3:#c0392b;--z3l:#fde8e6;
+  --z4:#16875a;--z4l:#d9f0e7;
+  --z5:#d68910;--z5l:#fdf0d5;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:#fafaf8;color:var(--text);line-height:1.6;}
+
+/* COVER */
+.cover{background:var(--paris);color:#fff;padding:48px 40px 40px;position:relative;overflow:hidden;}
+.cover::after{content:'';position:absolute;right:-60px;top:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04);}
+.cover-eye{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.6;margin-bottom:10px;}
+.cover-title{font-family:'DM Serif Display',serif;font-size:38px;font-weight:400;line-height:1.2;margin-bottom:12px;}
+.cover-sub{font-size:15px;opacity:.75;margin-bottom:28px;}
+.cover-pills{display:flex;gap:10px;flex-wrap:wrap;}
+.cpill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 14px;font-size:13px;}
+
+/* NAV */
+nav{background:#fff;border-bottom:1px solid var(--border);padding:0 24px;display:flex;gap:2px;overflow-x:auto;position:sticky;top:0;z-index:100;}
+nav a{display:block;padding:13px 14px;font-size:12px;color:var(--t2);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:all .15s;}
+nav a:hover{color:var(--paris);border-bottom-color:var(--paris-m);}
+
+/* MAIN */
+.main{max-width:940px;margin:0 auto;padding:40px 24px 80px;}
+.sec-title{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;color:var(--paris);margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px;}
+section{margin-bottom:52px;scroll-margin-top:60px;}
+
+/* ALERTS */
+.alert{border-radius:var(--rs);padding:13px 16px;margin-bottom:14px;display:flex;gap:12px;}
+.aw{background:var(--warn-l);border-left:3px solid var(--warn);}
+.ai{background:var(--paris-l);border-left:3px solid var(--paris-m);}
+.at{background:var(--go-l);border-left:3px solid var(--go);}
+.al-i{font-size:17px;flex-shrink:0;margin-top:1px;}
+.al-b{font-size:13px;line-height:1.6;}
+.al-b strong{display:block;margin-bottom:2px;}
+
+/* ZONE MAP SECTION */
+.zone-overview{background:#fff;border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-bottom:16px;}
+.zone-map-wrap{position:relative;}
+.zone-map-wrap iframe{display:block;width:100%;height:420px;border:none;}
+.zone-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;padding:16px;}
+.zl{border-radius:var(--rs);padding:11px 14px;border-left:4px solid;}
+.zl-title{font-size:13px;font-weight:600;margin-bottom:3px;}
+.zl-days{font-size:11px;opacity:.8;margin-bottom:5px;}
+.zl-sites{font-size:11px;line-height:1.6;}
+.z1-card{background:var(--z1l);border-color:var(--z1);}.z1-card .zl-title{color:var(--z1);}
+.z2-card{background:var(--z2l);border-color:var(--z2);}.z2-card .zl-title{color:var(--z2);}
+.z3-card{background:var(--z3l);border-color:var(--z3);}.z3-card .zl-title{color:var(--z3);}
+.z4-card{background:var(--z4l);border-color:var(--z4);}.z4-card .zl-title{color:var(--z4);}
+.z5-card{background:var(--z5l);border-color:var(--z5);}.z5-card .zl-title{color:var(--z5);}
+
+/* ACCORDION */
+.acc{border:1px solid var(--border);border-radius:var(--r);margin-bottom:12px;overflow:hidden;background:#fff;scroll-margin-top:60px;}
+.acc-head{display:flex;align-items:center;gap:14px;padding:16px 20px;cursor:pointer;user-select:none;transition:background .15s;}
+.acc-head:hover{background:var(--neutral);}
+.acc-badge{width:50px;height:50px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;}
+.acc-badge .dn{font-size:18px;font-weight:600;line-height:1;}
+.acc-badge .dm{font-size:10px;text-transform:uppercase;letter-spacing:.07em;opacity:.75;}
+.bp{background:var(--paris-l);color:var(--paris);}
+.bd{background:var(--disney-l);color:var(--disney);}
+.bt{background:var(--go-l);color:var(--go);}
+.acc-meta{flex:1;}
+.acc-title{font-size:15px;font-weight:600;color:var(--text);margin-bottom:2px;}
+.acc-sub{font-size:12px;color:var(--t2);}
+.acc-tag{font-size:11px;font-weight:500;padding:3px 9px;border-radius:20px;white-space:nowrap;align-self:flex-start;}
+.tp{background:var(--paris-l);color:var(--paris);}
+.td{background:var(--disney-l);color:var(--disney);}
+.tt{background:var(--go-l);color:var(--go);}
+.acc-arrow{font-size:18px;color:var(--t3);transition:transform .25s;flex-shrink:0;}
+.acc.open .acc-arrow{transform:rotate(180deg);}
+.acc-body{display:none;padding:0 20px 18px;border-top:1px solid var(--border);}
+.acc.open .acc-body{display:flex;flex-direction:column;gap:10px;padding-top:16px;}
+
+/* TRANSPORT ROW */
+.trow{background:#f7f6f4;border-radius:var(--rs);padding:10px 14px;font-size:13px;color:var(--t2);display:flex;gap:10px;align-items:flex-start;}
+.trow .ti{font-size:16px;flex-shrink:0;margin-top:1px;}
+
+/* ACTIVITIES */
+.acts{display:flex;flex-direction:column;gap:8px;}
+.act{display:flex;gap:12px;padding:11px 14px;border:1px solid var(--border);border-radius:var(--rs);align-items:flex-start;}
+.aico{font-size:19px;flex-shrink:0;width:26px;text-align:center;}
+.acon{flex:1;}
+.atit{font-size:14px;font-weight:500;color:var(--text);}
+.adesc{font-size:12px;color:var(--t2);margin-top:3px;line-height:1.55;}
+.atip{font-size:11px;color:var(--paris-m);margin-top:5px;}
+.chip{display:inline-block;font-size:11px;color:var(--t3);border:1px solid var(--border);border-radius:10px;padding:2px 8px;margin-top:4px;}
+.meal{display:inline-block;font-size:11px;background:var(--go-l);color:var(--go);border-radius:10px;padding:2px 8px;margin-top:4px;font-weight:500;}
+
+/* MAP EMBED */
+.mwrap{border-radius:var(--rs);overflow:hidden;border:1px solid var(--border);}
+.mwrap iframe{display:block;width:100%;height:290px;border:none;}
+.mlabel{font-size:11px;color:var(--t3);padding:6px 10px;background:#f7f6f4;}
+
+/* PRICE TABLE */
+table.pt{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:16px;}
+table.pt th{background:var(--paris);color:#fff;padding:10px 14px;text-align:left;font-weight:500;}
+table.pt td{padding:10px 14px;border-bottom:1px solid var(--border);vertical-align:top;}
+table.pt tr:last-child td{border-bottom:none;}
+table.pt tr:nth-child(even) td{background:var(--neutral);}
+.win{font-weight:600;color:var(--go);}
+.note{font-size:11px;color:var(--t3);display:block;margin-top:3px;}
+
+/* RESERVATIONS */
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.rgrid{grid-template-columns:1fr;}}
+.rcard{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:14px;}
+.rcard .rico{font-size:22px;margin-bottom:6px;}
+.rcard .rtit{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;}
+.rcard .rprice{font-size:12px;color:var(--t2);}
+.rcard .rurg{font-size:11px;margin-top:6px;padding:3px 8px;border-radius:10px;display:inline-block;}
+.rcard .rlink{display:inline-flex;align-items:center;gap:4px;margin-top:8px;font-size:12px;font-weight:500;color:var(--paris-m);text-decoration:none;}
+.rcard .rlink:hover{text-decoration:underline;}
+.uh{background:var(--warn-l);color:var(--warn);}
+.um{background:var(--disney-l);color:var(--disney);}
+.ul{background:var(--go-l);color:var(--go);}
+
+/* DOG */
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:600px){.dgrid{grid-template-columns:1fr;}}
+.dc{background:#fff;border:1px solid var(--border);border-radius:var(--rs);padding:14px;}
+.dc .dh{font-size:13px;font-weight:600;margin-bottom:6px;}
+.dc ul{padding-left:16px;font-size:12px;color:var(--t2);line-height:1.9;}
+
+footer{text-align:center;padding:28px;background:var(--paris);color:rgba(255,255,255,.5);font-size:12px;}
+footer strong{color:rgba(255,255,255,.8);}
+
+/* DAY SUMMARY (resumen de días) */
+.daysum{display:flex;flex-direction:column;}
+.daysum-cap{font-size:11px;color:var(--t3);padding:11px 16px 10px;border-bottom:1px solid var(--border);line-height:1.5;}
+a.dsrow{display:flex;align-items:baseline;gap:12px;padding:11px 16px;border-left:4px solid var(--dc,#888);border-bottom:1px solid var(--border);text-decoration:none;color:inherit;transition:background .15s;}
+a.dsrow:last-child{border-bottom:none;}
+a.dsrow:hover{background:var(--neutral);}
+.dsday{flex:0 0 92px;font-size:13px;font-weight:600;color:var(--dc,#333);line-height:1.25;}
+.dsday small{display:block;font-size:10px;font-weight:500;color:var(--t3);text-transform:uppercase;letter-spacing:.03em;margin-top:1px;}
+.dsbody{flex:1;min-width:0;}
+.dszone{font-size:13px;font-weight:600;color:var(--text);}
+.dshi{font-size:12px;color:var(--t2);margin-top:2px;line-height:1.5;}
+.dsgo{align-self:center;color:var(--t3);font-size:16px;flex-shrink:0;}
+@media(max-width:560px){.dsday{flex-basis:72px;}}
+
+/* LIVE MAP button (ruta editable en Google Maps) */
+.maplive{display:inline-flex;align-items:center;gap:7px;margin-top:4px;padding:9px 14px;background:var(--paris);color:#fff;border-radius:var(--rs);font-size:13px;font-weight:500;text-decoration:none;transition:background .15s;align-self:flex-start;}
+.maplive:hover{background:var(--paris-m);}
+.maplive small{font-weight:400;opacity:.85;}
+
+/* MAP EDIT button (abre la ruta del iframe en Google Maps para editarla) */
+.mapedit{display:inline-flex;align-items:center;gap:6px;margin-top:6px;padding:7px 12px;background:#fff;border:1px solid var(--border);color:var(--paris-m);border-radius:var(--rs);font-size:12.5px;font-weight:500;text-decoration:none;transition:.15s;}
+.mapedit:hover{background:var(--neutral);border-color:var(--paris-m);}
+
+/* INTERACTIVE ZONES MAP (sustituye el PNG de barrios) */
+.zonemap{position:relative;z-index:0;height:360px;width:100%;border:0.5px solid var(--border);border-radius:var(--r);overflow:hidden;background:#eef1f4;}
+.zonemap-cap{font-size:11px;color:var(--t3);padding:8px 4px 0;line-height:1.5;}
+.zpop{font-size:12.5px;line-height:1.5;}
+.zpop b{font-size:13.5px;}
+.zpop .zbar{height:4px;width:42px;border-radius:2px;margin:2px 0 6px;}
+.zpop a{display:inline-block;margin-top:6px;color:var(--paris-m);font-weight:600;text-decoration:none;}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+
+<div class="cover">
+  <div class="cover-eye">Guía de viaje · Agosto 2026</div>
+  <div class="cover-title">París &amp; Disneyland<br>Agosto 2026</div>
+  <div class="cover-sub">7 – 14 agosto · 4 adultos (Nerea, Rober, Maria &amp; Luis)· 2 niños (Aitor y Oliver) · 1 perra (Pipa)</div>
+  <div class="cover-pills">
+    <span class="cpill">✈️ Madrid → CDG · 11:25 / 13:35</span>
+    <span class="cpill">🏨 Adagio Nation · 7–11 ago</span>
+    <span class="cpill">🏨 Residhome Val d'Europe · 11–14 ago</span>
+    <span class="cpill">🎢 Disney 12 y 13 ago</span>
+    <span class="cpill">✈️ CDG → MAD · 12:45 / 14:55</span>
+  </div>
+</div>
+
+<nav>
+  <a href="#zonas">Mapa zonas</a>
+  <a href="#acc7">7 · Llegada</a>
+  <a href="#acc8">8 · Eiffel</a>
+  <a href="#acc9">9 · Arc · Montmartre</a>
+  <a href="#acc10">10 · Histórico</a>
+  <a href="#acc11">11 · Louvre · Traslado</a>
+  <a href="#acc12">12 · Disneyland</a>
+  <a href="#acc13">13 · WaltDisney Studios</a>
+  <a href="#acc14">14 · Vuelta</a>
+  <a href="#transporte">Transporte</a>
+  <a href="#reservas">Reservas</a>
+  <a href="#sgluten">Sin gluten</a>
+  <a href="#perra">Pipa</a>
+</nav>
+
+<div class="main"> <!-- ===== MAPA DE ZONAS ===== -->
+<section id="zonas">
+<div class="sec-title"><span>🗺️</span> Mapa de París · Zonas turísticas</div>
+  <!-- Mapa interactivo de zonas turísticas -->
+  <div id="zonemap" class="zonemap"></div>
+  <div class="zonemap-cap">🗺️ Zonas turísticas de París · toca una zona para ver su información</div>
+
+<div style="background:#fff;border:0.5px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:12px;">
+  <div class="daysum-cap">Resumen del viaje día a día</div>
+  <div class="daysum">
+    <a class="dsrow" href="#acc7" style="--dc:#5B6B7B;">
+      <div class="dsday">Día 7<small>jue · llegada</small></div>
+      <div class="dsbody"><div class="dszone">Llegada a París · Nation</div><div class="dshi">Vuelo MAD → CDG (11:25 / 13:35). Check-in en Adagio Nation y primer paseo por el barrio</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc8" style="--dc:#2E5550;">
+      <div class="dsday">Día 8<small>vie</small></div>
+      <div class="dsbody"><div class="dszone">Torre Eiffel y Trocadéro</div><div class="dshi">Foto en Trocadéro, crucero por el Sena, picnic en el Campo de Marte y la Torre Eiffel al atardecer</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc9" style="--dc:#AA1904;">
+      <div class="dsday">Día 9<small>sáb · mañana</small></div>
+      <div class="dsbody"><div class="dszone">Mercado Marché d'Aligre · Arco del Triunfo · Campos Elíseos</div><div class="dshi">Mercado del barrio, Arco del Triunfo y paseo por los Campos Elíseos</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc9" style="--dc:#60713A;">
+      <div class="dsday">Día 9<small>sáb · tarde</small></div>
+      <div class="dsbody"><div class="dszone">Montmartre · Sagrado Corazón · Moulin Rouge</div><div class="dshi">Funicular a la basílica, pintores de la Plaza del Tertre y Moulin Rouge de noche</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc10" style="--dc:#723088;">
+      <div class="dsday">Día 10<small>dom · mañana</small></div>
+      <div class="dsbody"><div class="dszone">Isla de la Cité · Marais · Jardin de Luxemburgo</div><div class="dshi">Notre-Dame, Santa Capilla, Isla Saint-Louis y Jardín de Luxemburgo</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc10" style="--dc:#3E8A5B;">
+      <div class="dsday">Día 10<small>dom · tarde</small></div>
+      <div class="dsbody"><div class="dszone">Catacumbas · Montparnasse</div><div class="dshi">Visita a las Catacumbas (entrada en Denfert-Rochereau)</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc11" style="--dc:#7F7B34;">
+      <div class="dsday">Día 11<small>lun · mañana</small></div>
+      <div class="dsbody"><div class="dszone">Louvre · Tullerías · Traslado a Val d'Europe</div><div class="dshi">Mona Lisa, Victoria de Samotracia y la Pirámide — RER A a Disney</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc12" style="--dc:#C8860A;">
+      <div class="dsday">Días 12-13<small>mar–mié</small></div>
+      <div class="dsbody"><div class="dszone">Disneyland Paris</div><div class="dshi">Dos días de parques (32 km al este)</div></div>
+      <div class="dsgo">›</div>
+    </a>
+    <a class="dsrow" href="#acc14" style="--dc:#5B6B7B;">
+      <div class="dsday">Día 14<small>jue · vuelta</small></div>
+      <div class="dsbody"><div class="dszone">Vuelta a Madrid</div><div class="dshi">Último desayuno francés y traslado. Vuelo CDG → MAD (12:45 / 14:55)</div></div>
+      <div class="dsgo">›</div>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- ===== QUÉ HACER CADA DÍA ===== -->
+<section id="dias">
+<div class="sec-title"><span>📅</span> Qué hacer cada día · 7 – 14 agosto</div>
+
+<div class="acc" id="acc7">
+  <div class="acc-head" onclick="toggle('acc7')">
+    <div class="acc-badge bt"><div class="dn">7</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Jueves · Llegada a París · Check-in Adagio Nation</div>
+      <div class="acc-sub">Vuelo MAD → CDG · Llegada 13:35 · RER B + Metro → Nation</div>
+    </div>
+    <span class="acc-tag tt">Viaje</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="trow"><div class="ti">🚆</div><div>
+      <strong>CDG Terminal 2 → Adagio Paris Nation · 15 Ter rue Lamblardie, 75012</strong><br>
+      RER B dirección "Paris Sud" → Châtelet-Les-Halles (45 min) → Metro L6 → Nation → 8 min a pie.<br>
+    </div></div>
+    <div class="mwrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d84019.17!2d2.2922926!3d48.8636339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x47e66f4fe26e3dcd%3A0xa8f1a52b87e028f6!2sA%C3%A9roport+Paris+Charles+de+Gaulle!3m2!1d49.0097!2d2.5479!4m5!1s0x47e6729c72a0e71f%3A0x1b8cc82bb7d6e518!2sAparthotel+Adagio+Paris+Nation%2C+75012+Paris!3m2!1d48.8406!2d2.3977!5e0!3m2!1ses!2ses!4v1717000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+      <div class="mlabel">🗺️ CDG T2 → Adagio Paris Nation · RER B + Metro L6 · ~55 min</div>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="aico">🏠</div><div class="acon">
+        <div class="atit">Check-in Adagio Nation</div>
+        <div class="adesc">Check-in a partir de las 15h. Supermercado Auchan a 4 min.</div>
+        <div class="chip">15:00 – 16:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🌳</div><div class="acon">
+        <div class="atit">Paseo por Nation al atardecer · 3 paradas</div>
+        <div class="adesc">Primer contacto con París y sin agobios, para aclimatarse tras el vuelo. Un paseo tranquilo del barrio y los parques, ideal con los niños y Pipa.</div>
+        <div class="chip">17:00 – 21:30</div>
+      </div></div>
+      <div class="act"><div class="aico">⛲️</div><div class="acon">
+        <div class="atit">Plaza de la Nación</div>
+        <div class="adesc">La gran plaza del 12º y sus bulevares. A 8 min a pie del hotel. Animada y típicamente parisina, buen punto de partida.</div>
+        <div class="chip">8 min desde el hotel</div>
+      </div></div>
+      <div class="act"><div class="aico">🛤️</div><div class="acon">
+        <div class="atit">Coulée Verte René-Dumont (el paseo verde elevado)</div>
+        <div class="adesc">El paseo elevado sobre la antigua vía de tren: casi 5 km ajardinados por encima de la ciudad. Se accede cómodo por el Jardín de Reuilly. Abierto hasta las 21:30, perfecto al atardecer.</div>
+        <div class="chip">~15 min desde Nation</div>
+      </div></div>
+      <div class="act"><div class="aico">🌳</div><div class="acon">
+        <div class="atit">Bosque de Vincennes · Lago Daumesnil</div>
+        <div class="adesc">El gran pulmón verde de París y su lago. Atardecer junto al agua, barcas de remo y sitio de sobra para que Pipa corra. Cierre tranquilo del primer día.</div>
+        <div class="chip">~35 min desde la Coulée Verte</div>
+      </div></div>
+      <div class="act"><div class="aico">🍽️</div><div class="acon">
+        <div class="atit">Cena</div>
+        <div class="adesc">Tras el vuelo, algo cercano y sin complicaciones.</div>
+        <div class="atip">🌾 Opción más segura el primer día: <strong>Auchan</strong> (Bd de Reuilly, abierto hasta las 22:00) tiene sección «sans gluten».</div>
+        <div class="meal">🍽 Cena</div>
+        <div class="chip">21:00 – 21:30</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 8 -->
+<div class="acc" id="acc8">
+  <div class="acc-head" onclick="toggle('acc8')">
+    <div class="acc-badge bp"><div class="dn">8</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Viernes · Trocadéro · Crucero · Campo de Marte · Torre Eiffel al atardecer</div>
+      <div class="acc-sub">Metro L6 Nation → Trocadéro · Todo a pie · Torre Eiffel a las 20:30</div>
+    </div>
+    <span class="acc-tag tp">París</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="trow"><div class="ti">🚇</div><div>Metro L6 desde Nation → Trocadéro (~35 min directo). El resto del día todo a pie.</div></div>
+    <div class="mwrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m34!1m12!1m3!1d2625.1!2d2.2972!3d48.8589!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m19!3e2!4m5!1s0x47e6701e45f10349%3A0x29bb40df8e1fb1e0!2sTrocad%C3%A9ro%2C+Paris!3m2!1d48.8637!2d2.2893!4m5!1s0x47e6701e45f1053d%3A0xf2e68d0c6f6e5c1d!2sTour+Eiffel%2C+Paris!3m2!1d48.8584!2d2.2945!4m5!1s0x47e6701eb3d65f3f%3A0xb41c6f8e8e7c3d24!2sChamp+de+Mars%2C+Paris!3m2!1d48.8556!2d2.2985!5e0!3m2!1ses!2ses!4v1717000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+      <div class="mlabel">🗺️ Trocadéro → Torre Eiffel → Campo de Marte (a pie · ~25 min total)</div>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="aico">📷</div><div class="acon">
+        <div class="atit">Trocadéro: la foto clásica de la Torre</div>
+        <div class="adesc">Vista frontal perfecta de la Torre Eiffel. Artistas y animadores desde primera hora.</div>
+        <div class="chip">10:00 – 11:00</div>
+      </div></div>
+      <div class="act"><div class="aico">⛵</div><div class="acon">
+        <div class="atit">Crucero por el Sena</div>
+        <div class="adesc">1 hora navegando junto a Notre-Dame, el Louvre y los puentes históricos. Salida desde el Puente de Jena, al pie de la Torre.</div>
+        <div class="atip">⚠️ Confirmar que Pipa puede subir (en la gran mayoria de cruceros no esta permitido).</div>
+        <div class="chip">11:30 – 12:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🥖</div><div class="acon">
+        <div class="atit">Picnic en el Campo de Marte</div>
+        <div class="adesc">El plan más parisino del viaje, baguette, de cualquier panadería del barrio y con la Torre de fondo.</div>
+        <div class="meal">🍽 Almuerzo</div>
+        <div class="chip">13:00 – 14:30</div>
+      </div></div>
+      <div class="act"><div class="aico">😴</div><div class="acon">
+        <div class="atit">Descanso de tarde</div>
+        <div class="adesc">Tarde libre para pasear por la zona, visitar el Museo del Quai Branly (exteriores y jardines gratuitos) o simplemente descansar.</div>
+        <div class="chip">14:30 – 19:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🗼</div><div class="acon">
+        <div class="atit">Torre Eiffel al atardecer · La visita completa</div>
+        <div class="adesc">Entrada a las 20:30, una hora antes de que el sol se ponga (~21:30 en agosto). Desde arriba: París con luz dorada, luego el atardecer completo y al bajar la Torre ya iluminada.</div>
+        <div class="atip">⚠️ Reservar · Franja 20:30 · Las entradas al atardecer son las más demandadas de todo agosto.</div>
+        <div class="chip">20:30 – 22:00</div>
+      </div></div>
+      <div class="act"><div class="aico">✨</div><div class="acon">
+        <div class="atit">Sparkling desde el Campo de Marte</div>
+        <div class="adesc">Al bajar de la Torre, el show de luces doradas de las 22:00 se ve desde el Campo de Marte. Una experiencia completamente diferente a verlo desde arriba.</div>
+        <div class="chip">22:00 – 22:15</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 9 -->
+<div class="acc" id="acc9">
+  <div class="acc-head" onclick="toggle('acc9')">
+    <div class="acc-badge bp"><div class="dn">9</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Sábado · Marché d'Aligre · Arco del Triunfo · Campos Elíseos · Montmartre · Moulin Rouge</div>
+      <div class="acc-sub">A pie → Mercado · Metro L1 → Étoile · Metro L2 → Anvers · Funicular · Noche en Pigalle</div>
+    </div>
+    <span class="acc-tag tp">París</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="trow"><div class="ti">🚶</div><div><strong>Mañana:</strong> A pie desde el hotel hasta el Marché d'Aligre (~25 min). Metro L1 desde Bastille → Charles de Gaulle-Étoile (~20 min directo).</div></div>
+    <div class="trow"><div class="ti">🚇</div><div><strong>Tarde:</strong> Metro L2 desde Charles de Gaulle-Étoile → Anvers (Montmartre, ~15 min). El funicular sube desde la Plaza Saint-Pierre con el mismo billete de metro.</div></div>
+    <div class="mwrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d5243.4!2d2.3282!3d48.8854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x47e66e1f06e2b70f%3A0xf6248e2c8d5dc4c9!2sSacr%C3%A9-C%C5%93ur+Basilica%2C+Paris!3m2!1d48.8867!2d2.3431!4m5!1s0x47e66fc3e3d1fcdb%3A0x68a2a6f17afdb2f2!2sMoulin+Rouge%2C+Paris!3m2!1d48.8841!2d2.3322!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+      <div class="mlabel">🗺️ Sacré-Cœur → Plaza del Tertre → Moulin Rouge (a pie por Montmartre, tarde · ~20 min)</div>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="aico">🛒</div><div class="acon">
+        <div class="atit">Marché d'Aligre · El mercado del barrio</div>
+        <div class="adesc">A 25 minutos a pie del hotel, uno de los mejores mercados de París. Los sábados por la mañana hay mercado de alimentación al aire libre y rastro de antigüedades en la plaza. Frutas, quesos, charcutería y todo tipo de puestos.</div>
+        <div class="chip">8:30 – 10:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🏛️</div><div class="acon">
+        <div class="atit">Arco del Triunfo + subida a la terraza</div>
+        <div class="adesc">Metro L1 desde Bastille → Charles de Gaulle-Étoile. La terraza del Arco del Triunfo ofrece las mejores vistas aéreas de los 12 bulevares convergiendo en la Place de Charles de Gaulle.</div>
+        <div class="chip">10:30 – 12:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🛍️</div><div class="acon">
+        <div class="atit">Paseo por los Campos Elíseos + almuerzo</div>
+        <div class="adesc">El bulevar más famoso del mundo: tiendas, cines, cafés y terrazas. Al fondo: Place de la Concorde y entrada a los Jardines de las Tullerías.</div>
+        <div class="meal">🍽 Almuerzo</div>
+        <div class="chip">13:30 – 14:00</div>
+      </div></div>
+      <div class="act"><div class="aico">⛪</div><div class="acon">
+        <div class="atit">Sagrado Corazón (Sacré-Cœur) en funicular</div>
+        <div class="adesc">Metro L2 desde Charles de Gaulle-Étoile → Anvers. La basílica blanca que corona París: entrada gratuita y vistas de toda la ciudad desde la explanada. El funicular sube desde la Plaza Saint-Pierre con el mismo billete de metro.</div>
+        <div class="chip">14:30 – 16:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🎨</div><div class="acon">
+        <div class="atit">Plaza del Tertre · los pintores de París</div>
+        <div class="adesc">La plaza de los artistas callejeros a pasos del Sacré-Cœur. Retratos al carboncillo en directo, pinturas de París. El souvenir más original y auténtico del viaje.</div>
+        <div class="chip">16:00 – ¡9:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🥞</div><div class="acon">
+        <div class="atit">Cena en crêperie de Montmartre</div>
+        <div class="adesc">Galette bretona salada + crêpe dulce de postre en los callejones del barrio. Auténtico y económico, perfecto para cerrar la tarde en Montmartre antes de bajar hacia Pigalle.</div>
+        <div class="meal">🍽 Cena</div>
+        <div class="chip">20:30 – 21:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🌙</div><div class="acon">
+        <div class="atit">Moulin Rouge iluminado de noche</div>
+        <div class="adesc">Bajando desde Montmartre hacia la parada de metro de Blanche o Pigalle, el Moulin Rouge resplandece en rojo. El barrio de Pigalle tiene mucho ambiente nocturno. Sin necesidad de entrar — muy fotogénico desde fuera, y queda de camino al metro de vuelta.</div>
+        <div class="chip">21:00 – 22:00</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 10 -->
+<div class="acc" id="acc10">
+  <div class="acc-head" onclick="toggle('acc10')">
+    <div class="acc-badge bp"><div class="dn">10</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Domingo · Notre-Dame · Santa Capilla · Marais · Luxemburgo · Catacumbas</div>
+      <div class="acc-sub">Metro L4 → Cité · Todo a pie · Catacumbas: Metro Denfert-Rochereau</div>
+    </div>
+    <span class="acc-tag tp">París</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="trow"><div class="ti">🚇</div><div>Metro L4 desde Nation → Cité (Notre-Dame y Santa Capilla). Resto del día todo a pie por el Marais, Isla Saint-Louis y Jardín de Luxemburgo. Para las Catacumbas: Metro L4/L6 → Denfert-Rochereau.</div></div>
+    <div class="mwrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d5249.0!2d2.3434!3d48.8496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e2!4m5!1s0x47e671e19ff53a01%3A0x36101abfe7d4bb8!2sNotre-Dame+de+Paris!3m2!1d48.853!2d2.3499!4m5!1s0x47e671f7e0f2f4a3%3A0xe52b37a31e0ed8e6!2sJardin+du+Luxembourg!3m2!1d48.8462!2d2.3372!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+      <div class="mlabel">🗺️ Notre-Dame → Santa Capilla → Isla Saint-Louis → Marais → Jardín de Luxemburgo (a pie ~50 min total)</div>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="aico">⛪</div><div class="acon">
+        <div class="atit">Notre-Dame de París (restaurada diciembre 2024)</div>
+        <div class="adesc">Completamente restaurada tras el incendio de 2019. Entrada gratuita con reserva de franja horaria — en agosto sin reserva la cola es de 1-2 horas.</div>
+        <div class="chip">9:30 – 11:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🌈</div><div class="acon">
+        <div class="atit">Santa Capilla · Sainte-Chapelle</div>
+        <div class="adesc">15 vidrieras de 15 metros que cubren toda la capilla superior con luz de colores. En un día soleado de agosto la experiencia es absolutamente irreal. La visita dura 30-45 minutos.</div>
+        <div class="chip">11:15 – 12:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🍦</div><div class="acon">
+        <div class="atit">Isla Saint-Louis · Helados Berthillon</div>
+        <div class="adesc">Cruzar el Puente Saint-Louis a la isla vecina. Los helados Berthillon son legendarios en París desde 1954. La isla más tranquila y elegante de París.</div>
+        <div class="meal">🍽 helados</div>
+        <div class="chip">12:00 – 13:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🥙</div><div class="acon">
+        <div class="atit">Almuerzo en el Marais</div>
+        <div class="adesc">El Marais es el barrio más vivo de París donde encontrarás una gran variedad de opciones gastronómicas.</div>
+        <div class="chip">13:30 – 15:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🌿</div><div class="acon">
+        <div class="atit">Jardines de Luxemburgo</div>
+        <div class="adesc">El parque más bonito del Barrio Latino. Aitor y Oliver pueden alquilar barcas de madera para el estanque, carrusel clásico y zonas de juego bajo los árboles.</div>
+        <div class="chip">15:00 – 17:00</div>
+      </div></div>
+      <div class="act"><div class="aico">💀</div><div class="acon">
+        <div class="atit">Catacumbas de París</div>
+        <div class="adesc">6 millones de restos humanos a 20 metros bajo tierra. Recorrido de 1,5 km, 131 escalones de bajada sin ascensor, pasillos estrechos y oscuros, temperatura ~14ºC. Reabrieron el 8 de abril de 2026 tras renovación completa.</div>
+        <div class="chip">17:00 – 18:30</div>
+      </div></div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- DÍA 11 -->
+<div class="acc" id="acc11">
+  <div class="acc-head" onclick="toggle('acc11')">
+    <div class="acc-badge bt"><div class="dn">11</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Lunes · Louvre · Jardines Tullerías · Traslado a Val d'Europe</div>
+      <div class="acc-sub">Metro L1 → Palais Royal · Mona Lisa · Victoria de Samotracia · Pirámide · RER A → Val d'Europe</div>
+    </div>
+    <span class="acc-tag tt">Traslado</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="alert ai">
+      <div class="al-i">🧳</div>
+      <div class="al-b"><strong>Maletas en consigna</strong> · Pedir al Adagio que las guarde al hacer el check-out. Así el día queda libre hasta el traslado de tarde. Alternativa: consigna pública en la Gare de Lyon, que está en la ruta hacia Val d'Europe.</div>
+    </div>
+    <div class="trow"><div class="ti">🚇</div><div>
+      Mañana: Metro L1 desde Nation → Palais Royal-Musée du Louvre (~15 min directo). Tarde: Metro L1 de vuelta a Nation → recoger maletas en el Adagio → Gare de Lyon → <strong>RER A hasta Val d'Europe</strong> (~35 min).
+    </div></div>
+    <div class="mwrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d8498.0!2d2.3667!3d48.8545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x47e6729c72a0e71f%3A0x1b8cc82bb7d6e518!2sNation%2C+Paris!3m2!1d48.8483!2d2.3958!4m5!1s0x47e671c99e9c9e11%3A0xd7a0bc7a8d4c56e3!2sMusee+du+Louvre%2C+Paris!3m2!1d48.8606!2d2.3376!5e0!3m2!1ses!2ses!4v1700000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+      <div class="mlabel">🗺️ Nation → Musée du Louvre (Metro L1 · ~15 min directo)</div>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="aico">☕</div><div class="acon">
+        <div class="atit">Desayuno tranquilo + check-out</div>
+        <div class="adesc">Último desayuno en el barrio de Nation. Check-out y dejar las maletas guardadas en el Adagio antes de salir hacia el Louvre.</div>
+        <div class="chip">8:30 – 9:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🏛️</div><div class="acon">
+        <div class="atit">Louvre · Mona Lisa · Victoria de Samotracia · Pirámide</div>
+        <div class="adesc">Visita de minimos: la Mona Lisa, la Victoria de Samotracia y la Pirámide de cristal desde dentro. En 1,5–2 horas se ven los tres iconos sin agobios. El propio edificio — el Palacio del Louvre — ya es un espectáculo.</div>
+        <div class="chip">9:45 – 13:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🌳</div><div class="acon">
+        <div class="atit">Jardines de las Tullerías · picnic o café</div>
+        <div class="adesc">A 5 minutos a pie del Louvre, los jardines son el mejor sitio para descansar antes del traslado. Sillas de metal parisinas junto al gran estanque, heladería. El escenario clásico de poscard entre el Louvre y la Place de la Concorde.</div>
+        <div class="meal">🍽 Almuerzo</div>
+        <div class="chip">13:30 – 14:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🧳</div><div class="acon">
+        <div class="atit">Recoger maletas y traslado a Val d'Europe</div>
+        <div class="adesc">Metro L1 de vuelta a Nation, recoger maletas en el Adagio y dirección Gare de Lyon. RER A desde Gare de Lyon → Val d'Europe (~35 min). La estación de Val d'Europe está literalmente pegada al Residhome.</div>
+        <div class="chip">16:00 – 17:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🏨</div><div class="acon">
+        <div class="atit">Check-in Residhome + preparativos Disney</div>
+        <div class="adesc">Check-in en el Residhome Val d'Europe. El centro comercial de al lado tiene supermercado — ideal para bocadillos y snacks para los días de Disney. Cena tranquila, preparar las mochilas y descanso antes de dos días intensos.</div>
+        <div class="chip">17:00 – 21:00</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 12 -->
+<div class="acc" id="acc12">
+  <div class="acc-head" onclick="toggle('acc12')">
+    <div class="acc-badge bd"><div class="dn">12</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Martes · Disneyland Park · Fantasyland · Pirates · Big Thunder · Show Castillo</div>
+      <div class="acc-sub">Salida 9:00 · RER A Val d'Europe → Marne-la-Vallée-Chessy · ¡4 minutos!</div>
+    </div>
+    <span class="acc-tag td">Disney</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="alert aw">
+      <div class="al-i">🐕</div>
+      <div class="al-b"><strong>Pipa los días de Disney</strong>No puede entrar a los parques ajustar horarios y estancia.</div>
+    </div>
+    <div class="trow"><div class="ti">🚆</div><div>
+      <strong>Val d'Europe → Marne-la-Vallée-Chessy (RER A · 1 parada · 4 minutos)</strong><br>
+      Trenes cada 15 min · La entrada al parque está frente a la estación.
+    </div></div>
+    <div class="mwrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d5237.4!2d2.7783!3d48.8673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x47e6103e25c36dcd%3A0x4e4b!2sGare+de+Val+d%27Europe!3m2!1d48.8548!2d2.7711!4m5!1s0x47e6703cfc56e0cd%3A0xf2e!2sDisneyland+Paris!3m2!1d48.8674!2d2.7836!5e0!3m2!1ses!2ses!4v1717000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+      <div class="mlabel">🗺️ Val d'Europe → Disneyland Paris · RER A · 4 minutos · 1 parada</div>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="aico">🏰</div><div class="acon">
+        <div class="atit">Mañana · Fantasyland y Adventureland</div>
+        <div class="adesc">Nada más entrar, directos a Peter Pan's Flight, Pirates of the Caribbean e Indiana Jones. Las primeras horas las colas son mínimas. App de Disney para ver tiempos en tiempo real.</div>
+        <div class="chip">9:30 – 13:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🥪</div><div class="acon">
+        <div class="atit">Almuerzo</div>
+        <div class="adesc">Los restaurantes de Disney son caros. Llevar bocadillos en la mochila está permitido — zona de picnic en la entrada. Si se come dentro, el Silver Spur Steakhouse es de los más razonables.</div>
+        <div class="meal">🍽 Almuerzo</div>
+        <div class="chip">13:00 – 14:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🎡</div><div class="acon">
+        <div class="atit">Tarde · Big Thunder Mountain + Space Mountain + Discoveryland</div>
+        <div class="adesc">Big Thunder Mountain (coaster suave, perfecta para Aitor y Oliver), Space Mountain para los más valientes, Buzz Lightyear Laser Blast. Hyperspace Mountain (Star Wars).</div>
+        <div class="chip">14:00 – 17:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🎭</div><div class="acon">
+        <div class="atit">Desfile Disney por Main Street</div>
+        <div class="adesc">El desfile pasa ~17:30 (confirmar en la app el día antes). Posicionarse 30-45 minutos antes en Main Street para primera fila.</div>
+        <div class="chip">17:00 – 18:00</div>
+      </div></div>
+      <div class="act"><div class="aico">✨</div><div class="acon">
+        <div class="atit">Show nocturno del Castillo</div>
+        <div class="adesc">Proyecciones de luz sobre el castillo de la Bella Durmiente + fuegos artificiales. Empieza ~22:00. El momento más mágico de Disneyland.</div>
+        <div class="chip">22:00 – 22:30</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 13 -->
+<div class="acc" id="acc13">
+  <div class="acc-head" onclick="toggle('acc13')">
+    <div class="acc-badge bd"><div class="dn">13</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Miércoles · Walt Disney Studios · Avengers · Ratatouille · Cars · Tower of Terror</div>
+      <div class="acc-sub">Mismo trayecto que el día anterior</div>
+    </div>
+    <span class="acc-tag td">Disney</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="acts">
+      <div class="act"><div class="aico">🦸</div><div class="acon">
+        <div class="atit">Mañana · Avengers Campus</div>
+        <div class="adesc">La zona estrella del parque Studios. Spider-Man WEB Adventure (para todos), Avengers Assemble: Flight Force (coaster lanzamiento).</div>
+        <div class="chip">9:30 – 12:30</div>
+      </div></div>
+      <div class="act"><div class="aico">🐭</div><div class="acon">
+        <div class="atit">Ratatouille: The Adventure</div>
+        <div class="adesc">Meterse dentro de la película de Remy a escala de ratón. Sin restricción de altura. La cola puede ser muy larga en agosto — Lightning Lane para esta.</div>
+        <div class="chip">12:30 – 14:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🏨</div><div class="acon">
+        <div class="atit">Tower of Terror + Crush's Coaster + Cars Road Trip</div>
+        <div class="adesc">Hollywood Tower Hotel (caída libre en ascensor) para los valientes. Crush's Coaster (tortuga giratoria de Nemo — fila siempre larga, Lightning Lane). Cars Road Trip para Aitor.</div>
+        <div class="chip">14:00 – 19:00</div>
+      </div></div>
+      <div class="act"><div class="aico">🛍️</div><div class="acon">
+        <div class="atit">Cena y recuerdos en Disney Village</div>
+        <div class="adesc">Zona comercial y de restaurantes entre los dos parques — sin ticket de parque. Última ronda de souvenirs y cena de cierre de los días Disney.</div>
+        <div class="chip">19:00 – 21:30</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- DÍA 14 -->
+<div class="acc" id="acc14">
+  <div class="acc-head" onclick="toggle('acc14')">
+    <div class="acc-badge bt"><div class="dn">14</div><div class="dm">ago</div></div>
+    <div class="acc-meta">
+      <div class="acc-title">Jueves · Check-out Residhome · RER A+B → CDG · Vuelo 12:45</div>
+      <div class="acc-sub" style="color:var(--warn);font-weight:500">⚠️ Salir del hotel antes de las 9:00</div>
+    </div>
+    <span class="acc-tag tt">Vuelta</span>
+    <span class="acc-arrow">▾</span>
+  </div>
+  <div class="acc-body">
+    <div class="trow"><div class="ti">🚆</div><div>
+      <strong>Val d'Europe → CDG Terminal 2</strong><br>
+      RER A hasta Châtelet-Les-Halles (~35 min) → RER B hasta CDG T2 (~30 min). Total ~65-70 min.<br>
+      <span style="color:var(--warn);font-weight:500">Salir a las 9:00 → llegar CDG a las 10:15-10:30 (vuelo 12:45)</span>
+    </div></div>
+    <div class="mwrap">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d84019.17!2d2.5547!3d48.8673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x47e6103e25c36dcd%3A0x4e4b!2sGare+de+Val+d%27Europe!3m2!1d48.8548!2d2.7711!4m5!1s0x47e66f4fe26e3dcd%3A0xa8f1!2sA%C3%A9roport+Paris+Charles+de+Gaulle!3m2!1d49.0097!2d2.5479!5e0!3m2!1ses!2ses!4v1717000000000!5m2!1ses!2ses" allowfullscreen loading="lazy"></iframe>
+      <div class="mlabel">🗺️ Residhome Val d'Europe → CDG Terminal 2 · RER A + RER B · ~65 min</div>
+    </div>
+    <div class="acts">
+      <div class="act"><div class="aico">☕</div><div class="acon">
+        <div class="atit">Último desayuno francés</div>
+        <div class="adesc">Croissant + napolitana de chocolate + café con leche en la panadería del barrio. El último desayuno francés del viaje.</div>
+        <div class="chip">7:30 – 8:45</div>
+      </div></div>
+      <div class="act"><div class="aico">🧳</div><div class="acon">
+        <div class="atit">Check-out y traslado al aeropuerto</div>
+        <div class="adesc">RER A desde Val d'Europe → Châtelet → RER B → CDG T2. Llegada ~10:15-10:30. Vuelo 12:45, llegada a Madrid 14:55.</div>
+        <div class="chip">10:30 – 11:30</div>
+      </div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===== TRANSPORTE ===== -->
+<section id="transporte">
+<div class="sec-title"><span>🚇</span> Transporte público en París</div>
+<div class="alert at">
+  <div class="al-i">💡</div>
+  <div class="al-b"><strong>Base del viaje: Metro + RER.</strong> Con el hotel en Nation (nudo de L1, L2 y L6), el transporte público cubre todo el itinerario sin necesidad de taxi ni bus turístico. Pipa viaja gratis en transportín ≤45 cm en toda la red RATP. El bus turístico queda como opción puntual si los niños se cansan.</div>
+</div>
+
+<div style="font-family:'DM Serif Display',serif;font-size:17px;color:var(--paris);margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);">Estrategia de tarifas · dos fases</div>
+
+<div class="rgrid" style="margin-bottom:16px;">
+  <div class="rcard">
+    <div class="rtit" style="font-size:14px;margin-bottom:8px;">📅 Fase 1 · Días 7–9 (jue–sáb) · Billetes sueltos</div>
+    <div class="rprice">
+      <strong>Llegada CDG · Día 7:</strong> Billete individual RER B Zona 5 en las máquinas de T2 antes de cruzar el torniquete.<br>
+      <span style="color:var(--warn);font-weight:500">~11,80 €/adulto · ~5,90 €/Aitor (hasta 10 años)</span><br><br>
+      <strong>Días 8 y 9 en París:</strong> Carnet de 10 billetes t+ (17,35 €). Un carnet por adulto cubre holgadamente 2 días de metro.<br>
+      <span class="note">Los billetes t+ sueltos NO son válidos en el RER B desde CDG — es un billete distinto.</span>
+    </div>
+  </div>
+  <div class="rcard">
+    <div class="rtit" style="font-size:14px;margin-bottom:8px;">🗓️ Fase 2 · Días 10–14 (lun–vie) · Navigo Semaine</div>
+    <div class="rprice">
+      Semana <strong>lunes 10 – domingo 16 agosto</strong><br>
+      <span style="color:var(--go);font-weight:600">30,75 €/adulto · ~15 €/Aitor</span> (tarifa reducida hasta 10 años)<br><br>
+      Cubre <strong>todo sin límite</strong>: metro, RER A (Disney días 12–13, ~2,55 €/viaje sin Navigo), RER B (vuelta a CDG el día 14).<br><br>
+      <span style="color:var(--warn);font-weight:500">⚠️ Requiere tarjeta Navigo Découverte (5 € · foto de carnet) — comprar en cualquier taquilla de metro o en el aeropuerto.</span>
+    </div>
+    <div class="rurg ul" style="margin-top:10px;">💰 Coste Fase 2 estimado · 6 personas: ~175 €</div>
+  </div>
+</div>
+
+<div style="font-family:'DM Serif Display',serif;font-size:17px;color:var(--paris);margin:20px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);">Red de transporte · líneas clave</div>
+<div id="transmap" class="zonemap"></div>
+
+<div class="alert ai" style="margin-top:16px;">
+  <div class="al-i">🐕</div>
+  <div class="al-b"><strong>Pipa en el transporte:</strong> Transportín ≤45 cm = viaja gratis en metro, RER y autobús. Sin bozal si va en transportín cerrado. Sin restricción horaria en agosto.</div>
+</div>
+<div class="alert ai">
+  <div class="al-i">📱</div>
+  <div class="al-b"><strong>Apps recomendadas:</strong> <strong>Citymapper</strong> para rutas en tiempo real <strong>RATP</strong> para horarios e incidencias en tiempo real.</div>
+</div>
+</section>
+
+<!-- ===== RESERVAS ===== -->
+<section id="reservas">
+<div class="sec-title"><span>🎟️</span> Reservas</div>
+<div class="rgrid">
+  <div class="rcard"><div class="rico">🗼</div><div class="rtit">Torre Eiffel · Franja atardecer</div><div class="rprice">~27 €/adulto · Gratis menores 18 UE<br>Franja 20:30</div><div class="rurg uh">🔴 Urgente — las más demandadas de agosto</div><a class="rlink" href="https://tickets.toureiffel.paris" target="_blank" rel="noopener">↗ Reservar en toureiffel.paris</a></div>
+  <div class="rcard"><div class="rico">⛪</div><div class="rtit">Notre-Dame de París</div><div class="rprice">Gratuita · Reserva de franja horaria obligatoria</div><div class="rurg uh">🔴 Muy recomendable en agosto</div><a class="rlink" href="https://www.notredamedeparis.fr/en/visit/reservation-free/" target="_blank" rel="noopener">↗ Reservar en notredamedeparis.fr</a></div>
+  <div class="rcard"><div class="rico">🌈</div><div class="rtit">Santa Capilla</div><div class="rprice">~13 €/adulto · Gratis menores 18 UE<br>Franja horaria obligatoria</div><div class="rurg uh">🔴 Urgente — temporada alta</div><a class="rlink" href="https://tickets.monuments-nationaux.fr/es-ES/familias?site=2035141861660400306" target="_blank" rel="noopener">↗ Reservar en sainte-chapelle.fr</a></div>
+  <div class="rcard"><div class="rico">💀</div><div class="rtit">Catacumbas de París</div><div class="rprice">31 €/adulto (audioguía) · 15 €/niño 5-17 años<br>Solo abre plazo 7 días antes</div><div class="rurg um">🟡 Reservar en cuanto abra el plazo</div><a class="rlink" href="https://www.catacombes.paris.fr/es" target="_blank" rel="noopener">↗ Reservar en catacombes.paris.fr</a></div>
+  <div class="rcard"><div class="rico">⛵</div><div class="rtit">Crucero Vedettes du Pont Neuf</div><div class="rprice">~18 €/adulto · ~9 €/niño<br>Admiten mascotas</div><div class="rurg um">🟡 Online más barato y sin esperas</div><a class="rlink" href="https://www.vedettesdupontneuf.com/cruceros/" target="_blank" rel="noopener">↗ Reservar en vedettesdupontneuf.com</a></div>
+  <div class="rcard"><div class="rico">🏰</div><div class="rtit">Disneyland Paris (2 días)</div><div class="rprice">Desde 52 €/persona/día<br>Magic Flex = fecha flexible</div><div class="rurg uh">🔴 Urgente — precio sube según se acerca</div><a class="rlink" href="https://tickets.disneylandparis.com/es-es/tickets" target="_blank" rel="noopener">↗ Comprar en disneylandparis.com</a></div>
+  <div class="rcard"><div class="rico">🚌</div><div class="rtit">Bus Turístico (opcional, 1 día)</div><div class="rprice">TootBus: ~36 €/adulto · ~18 €/niño 4-12 años<br>Útil el día de Montmartre con niños</div><div class="rurg ul">🟢 Sin urgencia — decidir estrategia</div><a class="rlink" href="https://www.tootbus.com/es/paris" target="_blank" rel="noopener">↗ Ver rutas en tootbus.com</a></div>
+</div>
+</section>
+
+<!-- ===== SIN GLUTEN ===== -->
+<section id="sgluten">
+<div class="sec-title"><span>🌾</span> Sin gluten</div>
+<div class="alert aw">
+  <div class="al-i">⚠️</div>
+  <div class="al-b"><strong>Intolerancia al gluten.</strong>En Francia el término clave es «sans gluten». El mayor riesgo es la contaminación cruzada: freidoras compartidas, salsas espesadas con harina y tablas o cuchillos del pan.</div>
+</div>
+<div class="dgrid">
+  <div class="dc"><div class="dh">🗣️ Frases clave en francés</div><ul>
+    <li>«Je suis cœliaque, je dois manger sans gluten.»</li>
+    <li>«Sans aucune trace de gluten, attention à la contamination.»</li>
+    <li>«Cette sauce contient-elle de la farine de blé&nbsp;?»</li>
+    <li>«Avez-vous des plats sans gluten&nbsp;?»</li>
+  </ul></div>
+  <div class="dc"><div class="dh">🏰 En Disney (días 12 y 13)</div><ul>
+    <li>Disney gestiona alérgenos: pedir el menú «sans allergènes / sans gluten»</li>
+    <li>Avisar al sentarse y, mejor, reservar el restaurante con antelación</li>
+    <li>Llevar algún snack sin gluten por si acaso</li>
+    <li><a href="https://www.disneylandparis.com/es-es/restaurantes/" target="_blank" rel="noopener" style="color:var(--paris-m)">↗ Reservar restaurantes en disneylandparis.com</a></li>
+  </ul></div>
+  <div class="dc"><div class="dh">🥐 Direcciones 100% sin gluten</div><ul>
+    <li><strong>Chambelland</strong> — panadería/café, rue Ternaux (11º). Pan y bollería · <a href="https://www.chambelland.com" target="_blank" rel="noopener" style="color:var(--paris-m)">chambelland.com</a> · <a href="https://maps.google.com/?q=Chambelland+Paris" target="_blank" rel="noopener" style="color:var(--paris-m)">📍 Maps</a></li>
+    <li><strong>Noglu</strong> — comidas y repostería, rue Basfroi (11º). Solo mediodía · <a href="https://www.noglu.com" target="_blank" rel="noopener" style="color:var(--paris-m)">noglu.com</a> · <a href="https://maps.google.com/?q=Noglu+Paris" target="_blank" rel="noopener" style="color:var(--paris-m)">📍 Maps</a></li>
+    <li><strong>Little Nonna</strong> — italiano/pizza 100% GF, av. Niel (17º). Abre noches · <a href="https://maps.google.com/?q=Little+Nonna+Paris" target="_blank" rel="noopener" style="color:var(--paris-m)">📍 Maps</a></li>
+    <li><strong>La Sajerie</strong> — libanés GF, rue d'Abbeville (9º) · <a href="https://maps.google.com/?q=La+Sajerie+Paris" target="_blank" rel="noopener" style="color:var(--paris-m)">📍 Maps</a></li>
+    <li><strong>Loulou</strong> — junto a Notre-Dame (5º). Muchas opciones GF · <a href="https://maps.google.com/?q=Restaurant+Loulou+Paris+Notre-Dame" target="_blank" rel="noopener" style="color:var(--paris-m)">📍 Maps</a></li>
+    <li><strong>Judy Rousseau</strong> — sano y sin gluten, cerca del Louvre (1º). Mediodía · <a href="https://maps.google.com/?q=Judy+Rousseau+Paris" target="_blank" rel="noopener" style="color:var(--paris-m)">📍 Maps</a></li>
+  </ul></div>
+</div>
+</section>
+
+<!-- ===== PERRA ===== -->
+<section id="perra">
+<div class="sec-title"><span>🐕</span> Guía para Pipa</div>
+<div class="alert aw">
+  <div class="al-i">⚠️</div>
+  <div class="al-b"><strong>Documentación obligatoria antes de salir de España</strong>✅ Microchip · ✅ Certificado vacunación antirrábica vigente (entre 1 mes y 1 año) traducido al francés por veterinario oficial · ✅ Cartilla de vacunaciones completa · ✅ Pasaporte europeo para animales · ✅ Transportín ≤45cm para el metro</div>
+</div>
+<div class="dgrid">
+  <div class="dc"><div class="dh">✈️ Vuelo Madrid → CDG</div><ul><li>Con 3-4 kg: admitida en cabina en transportín</li><li>Confirmar con la aerolínea</li><li>Documentación: pasaporte europeo de animales</li><li><a href="https://www.iberia.com/es/mascotas/" target="_blank" rel="noopener" style="color:var(--paris-m)">↗ Política mascotas Iberia</a></li></ul></div>
+  <div class="dc"><div class="dh">🚇 Metro y RER París</div><ul><li>Transportín ≤45cm: viaja GRATIS en toda la red</li><li>Sin bozal si va en transportín cerrado</li><li>Sin restricción horaria en agosto</li><li><a href="https://www.ratp.fr/en/titres-et-tarifs/animals-on-the-ratp-network" target="_blank" rel="noopener" style="color:var(--paris-m)">↗ Info animales RATP</a></li></ul></div>
+  <div class="dc"><div class="dh">🏰 Días de Disney (12 y 13)</div><ul><li>NO puede entrar a los parques ni hoteles Disney</li><li>Animal Care Center: entre parking y Disney Village</li><li>Llevar: comida, bebedero, cert. antirrábico en francés</li><li>El personal NO la pasea — salir a mediodía</li><li><a href="https://www.disneylandparis.com/es-es/plan/consejos-utiles/mascotas/" target="_blank" rel="noopener" style="color:var(--paris-m)">↗ Reservar Animal Care Center</a></li></ul></div>
+  <div class="dc"><div class="dh">🌿 París dog-friendly</div><ul><li>La mayoría de brasseries y terrazas admiten perros</li><li>Campo de Marte y Trocadéro: con correa</li><li>Jardín de Luxemburgo: con correa en caminos</li><li>Crucero Sena: Confirmar si puede subir</li><li>Museos y monumentos: solo exterior</li><li><a href="https://maps.google.com/?q=parques+dog+friendly+Paris" target="_blank" rel="noopener" style="color:var(--paris-m)">📍 Zonas verdes cercanas</a></li></ul></div>
+</div>
+</section>
+
+</div>
+
+<footer>
+  <strong>París &amp; Disneyland · Agosto 2026 · Guía de viaje</strong><br>
+</footer>
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+function openAccordion(id) {
+  const el = document.getElementById(id);
+  if (el && el.classList.contains('acc')) el.classList.add('open');
+}
+document.querySelectorAll('nav a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    openAccordion(a.getAttribute('href').slice(1));
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  ['acc7','acc8','acc9','acc10','acc11','acc12','acc13','acc14'].forEach(function(id) {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('open');
+  });
+  if (location.hash) openAccordion(location.hash.slice(1));
+});
+window.addEventListener('hashchange', function() {
+  if (location.hash) openAccordion(location.hash.slice(1));
+});
+</script>
+<script>
+(function(){
+  var ZONES = {"type": "FeatureCollection", "features": [{"type": "Feature", "properties": {"name": "Trocadéro", "color": "#2E5550", "description": "La explanada con las mejores vistas de la Torre Eiffel, junto al Campo de Marte y el Sena."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.290741, 48.860683], [2.291954, 48.859909], [2.291778, 48.859781], [2.29156, 48.859611], [2.291559, 48.85961], [2.291251, 48.859353], [2.289839, 48.858241], [2.290327, 48.857929], [2.290337, 48.857923], [2.290341, 48.857921], [2.290347, 48.857917], [2.290357, 48.85791], [2.290367, 48.857904], [2.290376, 48.857898], [2.290386, 48.857892], [2.290396, 48.857885], [2.290406, 48.857879], [2.290412, 48.857875], [2.290416, 48.857873], [2.290425, 48.857867], [2.290435, 48.85786], [2.290445, 48.857854], [2.290455, 48.857848], [2.290465, 48.857842], [2.290474, 48.857835], [2.290484, 48.857829], [2.290494, 48.857823], [2.290504, 48.857817], [2.290514, 48.85781], [2.290523, 48.857804], [2.290533, 48.857798], [2.290543, 48.857792], [2.290549, 48.857788], [2.290553, 48.857785], [2.290563, 48.857779], [2.290572, 48.857773], [2.290582, 48.857767], [2.290592, 48.85776], [2.290602, 48.857754], [2.290612, 48.857748], [2.290621, 48.857742], [2.290702, 48.85769], [2.290781, 48.85764], [2.292935, 48.856265], [2.293079, 48.856174], [2.295746, 48.854466], [2.295868, 48.854387], [2.29593, 48.854348], [2.297389, 48.853412], [2.297923, 48.853069], [2.299322, 48.852174], [2.300884, 48.851176], [2.300965, 48.85123], [2.303746, 48.849439], [2.306149, 48.8479], [2.30734, 48.847139], [2.308042, 48.847392], [2.30822, 48.847435], [2.310378, 48.847952], [2.310526, 48.847988], [2.311155, 48.847579], [2.311261, 48.847511], [2.311487, 48.847369], [2.311626, 48.847281], [2.311768, 48.84719], [2.312091, 48.846983], [2.313641, 48.84599], [2.31373, 48.845933], [2.316098, 48.846663], [2.316572, 48.846825], [2.318043, 48.847338], [2.319079, 48.847734], [2.319355, 48.847845], [2.320084, 48.84818], [2.320178, 48.848231], [2.320541, 48.84842], [2.319571, 48.850525], [2.319034, 48.851696], [2.314512, 48.851833], [2.314731, 48.853692], [2.312142, 48.853823], [2.309544, 48.853956], [2.309929, 48.857243], [2.310008, 48.858069], [2.310176, 48.859939], [2.31028, 48.861122], [2.310433, 48.862783], [2.310386, 48.863627], [2.310298, 48.863625], [2.310264, 48.863625], [2.305616, 48.863542], [2.30538, 48.863538], [2.305379, 48.863538], [2.30203, 48.863482], [2.301946, 48.86348], [2.30192, 48.86348], [2.301756, 48.863477], [2.301728, 48.863477], [2.30159, 48.863474], [2.301517, 48.864525], [2.300199, 48.865059], [2.299963, 48.865269], [2.299911, 48.865315], [2.299899, 48.865326], [2.299342, 48.867141], [2.299247, 48.867454], [2.298913, 48.868558], [2.298296, 48.869612], [2.298244, 48.869702], [2.297526, 48.870925], [2.297495, 48.870965], [2.297493, 48.870967], [2.296168, 48.872484], [2.295344, 48.873427], [2.295311, 48.873465], [2.29531, 48.873466], [2.295133, 48.87367], [2.295118, 48.873687], [2.295117, 48.873688], [2.295116, 48.873689], [2.295115, 48.873691], [2.295113, 48.873692], [2.295113, 48.873693], [2.295112, 48.873693], [2.295112, 48.873694], [2.295111, 48.873695], [2.29511, 48.873696], [2.295109, 48.873697], [2.295108, 48.873698], [2.295107, 48.873699], [2.295107, 48.8737], [2.295106, 48.8737], [2.295106, 48.873701], [2.295105, 48.873701], [2.295105, 48.873702], [2.295104, 48.873703], [2.295103, 48.873704], [2.295103, 48.873705], [2.295102, 48.873705], [2.295102, 48.873706], [2.295101, 48.873707], [2.2951, 48.873707], [2.2951, 48.873708], [2.295099, 48.873708], [2.295099, 48.873709], [2.295098, 48.87371], [2.295097, 48.873711], [2.295097, 48.873712], [2.295096, 48.873712], [2.295096, 48.873713], [2.295095, 48.873713], [2.295095, 48.873714], [2.295094, 48.873715], [2.295093, 48.873716], [2.295092, 48.873717], [2.295091, 48.873718], [2.29509, 48.873719], [2.29509, 48.87372], [2.295089, 48.87372], [2.295089, 48.873721], [2.295088, 48.873722], [2.295087, 48.873723], [2.295086, 48.873724], [2.295086, 48.873725], [2.295085, 48.873725], [2.295084, 48.873726], [2.295084, 48.873727], [2.295083, 48.873727], [2.295083, 48.873728], [2.295082, 48.873728], [2.295082, 48.873729], [2.295081, 48.87373], [2.29508, 48.873731], [2.29508, 48.873732], [2.295079, 48.873732], [2.295079, 48.873733], [2.295078, 48.873733], [2.295078, 48.873734], [2.295077, 48.873735], [2.295076, 48.873735], [2.295076, 48.873736], [2.295075, 48.873737], [2.295074, 48.873738], [2.295074, 48.873739], [2.295073, 48.873739], [2.295073, 48.87374], [2.295072, 48.87374], [2.295072, 48.873741], [2.295071, 48.873742], [2.29507, 48.873743], [2.29507, 48.873744], [2.295069, 48.873744], [2.295068, 48.873745], [2.295067, 48.873746], [2.295067, 48.873747], [2.295066, 48.873747], [2.295066, 48.873748], [2.295065, 48.873749], [2.295064, 48.87375], [2.295063, 48.873751], [2.295063, 48.873752], [2.295062, 48.873752], [2.295061, 48.873753], [2.295061, 48.873754], [2.29506, 48.873754], [2.29506, 48.873755], [2.295059, 48.873755], [2.295059, 48.873756], [2.295058, 48.873757], [2.295057, 48.873758], [2.295057, 48.873759], [2.295056, 48.873759], [2.295056, 48.87376], [2.295055, 48.87376], [2.295055, 48.873761], [2.29504, 48.873779], [2.294933, 48.873812], [2.294547, 48.873935], [2.294022, 48.874101], [2.293005, 48.874423], [2.293004, 48.874423], [2.290488, 48.875224], [2.289969, 48.875388], [2.289198, 48.875632], [2.288, 48.876017], [2.287195, 48.876276], [2.284287, 48.877193], [2.284073, 48.87726], [2.283959, 48.877296], [2.28393, 48.877305], [2.283862, 48.877327], [2.283799, 48.877347], [2.283782, 48.877352], [2.283399, 48.877476], [2.283351, 48.877491], [2.283363, 48.877436], [2.283501, 48.876853], [2.283955, 48.87508], [2.284449, 48.873166], [2.285319, 48.869743], [2.285339, 48.869662], [2.285357, 48.869592], [2.285779, 48.867933], [2.285952, 48.867251], [2.286984, 48.863212], [2.287047, 48.862965], [2.28717, 48.862949], [2.287186, 48.862947], [2.287848, 48.862527], [2.288754, 48.861949], [2.288938, 48.861832], [2.289188, 48.861672], [2.290741, 48.860683]]]]}}, {"type": "Feature", "properties": {"name": "Campos Elíseos", "color": "#AA1904", "description": "La avenida más famosa de París, del Arco del Triunfo a la plaza de la Concordia. Lujo y cafés."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.32254, 48.865162], [2.323327, 48.866177], [2.323445, 48.86633], [2.323571, 48.866493], [2.323573, 48.866497], [2.323534, 48.86651], [2.324585, 48.867933], [2.324587, 48.867935], [2.324674, 48.868056], [2.325031, 48.868585], [2.32532, 48.869012], [2.325159, 48.869449], [2.325215, 48.869458], [2.325255, 48.869465], [2.325467, 48.8695], [2.325507, 48.869507], [2.325687, 48.869537], [2.325836, 48.869562], [2.326092, 48.870567], [2.326272, 48.871266], [2.326496, 48.872135], [2.326754, 48.87314], [2.32685, 48.873279], [2.326966, 48.873539], [2.327006, 48.873629], [2.327053, 48.873736], [2.327026, 48.873843], [2.327014, 48.873889], [2.326938, 48.874181], [2.326576, 48.875583], [2.323781, 48.875184], [2.321617, 48.875049], [2.320221, 48.874909], [2.319969, 48.874766], [2.319957, 48.87476], [2.31993, 48.874744], [2.319584, 48.87455], [2.315894, 48.873919], [2.314481, 48.873676], [2.312293, 48.8733], [2.311523, 48.873079], [2.311168, 48.873403], [2.310589, 48.873897], [2.309682, 48.874472], [2.309491, 48.874629], [2.309223, 48.874911], [2.309038, 48.875181], [2.307812, 48.87645], [2.306694, 48.877353], [2.305237, 48.878042], [2.303584, 48.87889], [2.303092, 48.879141], [2.300969, 48.878684], [2.298738, 48.878204], [2.298732, 48.878203], [2.29873, 48.878203], [2.298592, 48.878173], [2.298464, 48.878145], [2.298155, 48.878079], [2.298016, 48.877884], [2.297976, 48.877828], [2.296013, 48.875123], [2.295303, 48.874143], [2.295274, 48.874102], [2.295167, 48.873955], [2.29504, 48.873779], [2.295055, 48.873761], [2.295055, 48.87376], [2.295056, 48.87376], [2.295056, 48.873759], [2.295057, 48.873759], [2.295057, 48.873758], [2.295058, 48.873757], [2.295059, 48.873756], [2.295059, 48.873755], [2.29506, 48.873755], [2.29506, 48.873754], [2.295061, 48.873754], [2.295061, 48.873753], [2.295062, 48.873752], [2.295063, 48.873752], [2.295063, 48.873751], [2.295064, 48.87375], [2.295065, 48.873749], [2.295066, 48.873748], [2.295066, 48.873747], [2.295067, 48.873747], [2.295067, 48.873746], [2.295068, 48.873745], [2.295069, 48.873744], [2.29507, 48.873744], [2.29507, 48.873743], [2.295071, 48.873742], [2.295072, 48.873741], [2.295072, 48.87374], [2.295073, 48.87374], [2.295073, 48.873739], [2.295074, 48.873739], [2.295074, 48.873738], [2.295075, 48.873737], [2.295076, 48.873736], [2.295076, 48.873735], [2.295077, 48.873735], [2.295078, 48.873734], [2.295078, 48.873733], [2.295079, 48.873733], [2.295079, 48.873732], [2.29508, 48.873732], [2.29508, 48.873731], [2.295081, 48.87373], [2.295082, 48.873729], [2.295082, 48.873728], [2.295083, 48.873728], [2.295083, 48.873727], [2.295084, 48.873727], [2.295084, 48.873726], [2.295085, 48.873725], [2.295086, 48.873725], [2.295086, 48.873724], [2.295087, 48.873723], [2.295088, 48.873722], [2.295089, 48.873721], [2.295089, 48.87372], [2.29509, 48.87372], [2.29509, 48.873719], [2.295091, 48.873718], [2.295092, 48.873717], [2.295093, 48.873716], [2.295094, 48.873715], [2.295095, 48.873714], [2.295095, 48.873713], [2.295096, 48.873713], [2.295096, 48.873712], [2.295097, 48.873712], [2.295097, 48.873711], [2.295098, 48.87371], [2.295099, 48.873709], [2.295099, 48.873708], [2.2951, 48.873708], [2.2951, 48.873707], [2.295101, 48.873707], [2.295102, 48.873706], [2.295102, 48.873705], [2.295103, 48.873705], [2.295103, 48.873704], [2.295104, 48.873703], [2.295105, 48.873702], [2.295105, 48.873701], [2.295106, 48.873701], [2.295106, 48.8737], [2.295107, 48.8737], [2.295107, 48.873699], [2.295108, 48.873698], [2.295109, 48.873697], [2.29511, 48.873696], [2.295111, 48.873695], [2.295112, 48.873694], [2.295112, 48.873693], [2.295113, 48.873693], [2.295113, 48.873692], [2.295115, 48.873691], [2.295116, 48.873689], [2.295117, 48.873688], [2.295118, 48.873687], [2.295133, 48.87367], [2.29531, 48.873466], [2.295311, 48.873465], [2.295344, 48.873427], [2.296168, 48.872484], [2.297493, 48.870967], [2.297495, 48.870965], [2.297526, 48.870925], [2.298244, 48.869702], [2.298296, 48.869612], [2.298913, 48.868558], [2.299247, 48.867454], [2.299342, 48.867141], [2.299899, 48.865326], [2.299911, 48.865315], [2.299963, 48.865269], [2.300199, 48.865059], [2.301517, 48.864525], [2.30159, 48.863474], [2.301728, 48.863477], [2.301756, 48.863477], [2.30192, 48.86348], [2.301946, 48.86348], [2.30203, 48.863482], [2.305379, 48.863538], [2.30538, 48.863538], [2.305616, 48.863542], [2.310264, 48.863625], [2.310298, 48.863625], [2.310386, 48.863627], [2.315289, 48.863711], [2.31529, 48.863711], [2.316406, 48.863731], [2.318473, 48.863777], [2.318539, 48.863776], [2.318607, 48.86377], [2.318675, 48.863758], [2.318742, 48.863743], [2.319427, 48.863525], [2.319516, 48.863497], [2.319776, 48.863415], [2.319865, 48.863386], [2.320316, 48.863243], [2.320317, 48.863243], [2.320902, 48.863058], [2.320903, 48.863057], [2.32129, 48.863554], [2.321328, 48.863603], [2.321404, 48.863699], [2.32141, 48.863707], [2.321573, 48.863917], [2.322459, 48.865052], [2.32254, 48.865162]]]]}}, {"type": "Feature", "properties": {"name": "Ópera / Grandes Bulevares", "color": "#B23A82", "description": "La Ópera Garnier, las Galerías Lafayette y los Grandes Bulevares. Compras y arquitectura del XIX."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.33545, 48.87683], [2.337099, 48.876714], [2.338157, 48.876861], [2.339229, 48.876793], [2.339311, 48.876666], [2.339679, 48.876655], [2.340255, 48.876601], [2.342284, 48.876512], [2.343133, 48.876556], [2.344375, 48.876542], [2.344384, 48.876555], [2.348661, 48.876634], [2.348321, 48.87602], [2.348247, 48.875794], [2.347912, 48.874024], [2.3479, 48.872007], [2.34788, 48.870704], [2.343069, 48.871489], [2.340044, 48.871981], [2.339898, 48.871956], [2.339736, 48.871928], [2.337096, 48.871475], [2.337009, 48.871459], [2.336779, 48.869536], [2.336689, 48.86884], [2.336344, 48.868022], [2.33632, 48.867971], [2.335869, 48.866997], [2.333675, 48.867516], [2.331726, 48.867955], [2.330657, 48.868192], [2.330307, 48.868356], [2.329966, 48.868514], [2.328007, 48.869917], [2.328007, 48.869918], [2.327991, 48.869929], [2.325841, 48.869563], [2.325836, 48.869562], [2.326092, 48.870567], [2.326272, 48.871266], [2.326496, 48.872135], [2.326754, 48.87314], [2.32685, 48.873279], [2.326966, 48.873539], [2.327006, 48.873629], [2.327053, 48.873736], [2.327026, 48.873843], [2.327014, 48.873889], [2.326938, 48.874181], [2.326576, 48.875583], [2.326847, 48.875626], [2.326852, 48.875574], [2.33018, 48.875995], [2.331031, 48.87616], [2.332439, 48.876727], [2.332807, 48.876843], [2.334339, 48.876914], [2.33545, 48.87683]]]]}}, {"type": "Feature", "properties": {"name": "Tullerías", "color": "#7F7B34", "description": "El Louvre, los Jardines de las Tullerías y el Palais Royal, en pleno centro monumental."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.344593, 48.854049], [2.344593, 48.85405], [2.34587, 48.855277], [2.345901, 48.855314], [2.345975, 48.855417], [2.345976, 48.855418], [2.346104, 48.855587], [2.346803, 48.856708], [2.346986, 48.857009], [2.347053, 48.857079], [2.347184, 48.857163], [2.347184, 48.857164], [2.347299, 48.857215], [2.347518, 48.857312], [2.347519, 48.857312], [2.347565, 48.857349], [2.348208, 48.858495], [2.34822, 48.858516], [2.348165, 48.858534], [2.344786, 48.859626], [2.34397, 48.85989], [2.343969, 48.859891], [2.340826, 48.860908], [2.339123, 48.861478], [2.339466, 48.862135], [2.339184, 48.862218], [2.339577, 48.863157], [2.339769, 48.863539], [2.339878, 48.863756], [2.340266, 48.864473], [2.341113, 48.865658], [2.341136, 48.86569], [2.341136, 48.865691], [2.34116, 48.865727], [2.341178, 48.865749], [2.341178, 48.86575], [2.341084, 48.865772], [2.337372, 48.866649], [2.33587, 48.866996], [2.335869, 48.866997], [2.333675, 48.867516], [2.331726, 48.867955], [2.330657, 48.868192], [2.330307, 48.868356], [2.329966, 48.868514], [2.328007, 48.869917], [2.328007, 48.869918], [2.327991, 48.869929], [2.325841, 48.869563], [2.325836, 48.869562], [2.325687, 48.869537], [2.325507, 48.869507], [2.325467, 48.8695], [2.325255, 48.869465], [2.325215, 48.869458], [2.325159, 48.869449], [2.32532, 48.869012], [2.325031, 48.868585], [2.324674, 48.868056], [2.324587, 48.867935], [2.324585, 48.867933], [2.323534, 48.86651], [2.323573, 48.866497], [2.323571, 48.866493], [2.323445, 48.86633], [2.323327, 48.866177], [2.32254, 48.865162], [2.322459, 48.865052], [2.321573, 48.863917], [2.32141, 48.863707], [2.321404, 48.863699], [2.321328, 48.863603], [2.32129, 48.863554], [2.320903, 48.863057], [2.320941, 48.863046], [2.324736, 48.861886], [2.325231, 48.861732], [2.325237, 48.86173], [2.32528, 48.861717], [2.326102, 48.861478], [2.327068, 48.861146], [2.328312, 48.860737], [2.328327, 48.860731], [2.329524, 48.860268], [2.329815, 48.860165], [2.329856, 48.86015], [2.329904, 48.860133], [2.329909, 48.860132], [2.33291, 48.85935], [2.336609, 48.858583], [2.337547, 48.858389], [2.340366, 48.856834], [2.340382, 48.856825], [2.340478, 48.856772], [2.340855, 48.856563], [2.341938, 48.855626], [2.342682, 48.854983], [2.342805, 48.854897], [2.342857, 48.854863], [2.344593, 48.854049]]]]}}, {"type": "Feature", "properties": {"name": "Montmartre", "color": "#60713A", "description": "La colina de los artistas: la basílica del Sagrado Corazón, la Plaza del Tertre y el viejo París bohemio."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.351451, 48.890428], [2.351678, 48.891388], [2.352341, 48.89265], [2.352618, 48.89318], [2.352664, 48.893403], [2.352862, 48.894312], [2.352926, 48.895117], [2.352965, 48.895602], [2.35291, 48.895955], [2.352724, 48.897124], [2.352577, 48.8977], [2.352541, 48.897934], [2.352501, 48.898227], [2.35236, 48.899418], [2.352245, 48.900011], [2.351957, 48.901492], [2.351838, 48.90149], [2.351496, 48.901484], [2.348126, 48.901413], [2.348006, 48.901411], [2.34716, 48.901393], [2.346498, 48.901379], [2.344117, 48.901331], [2.341507, 48.901279], [2.338475, 48.901219], [2.337993, 48.901209], [2.337725, 48.901204], [2.337513, 48.9012], [2.337322, 48.901196], [2.336468, 48.901179], [2.335216, 48.90115], [2.331507, 48.901063], [2.330555, 48.901045], [2.330311, 48.90104], [2.33015, 48.901037], [2.330092, 48.900865], [2.329971, 48.900506], [2.329937, 48.900405], [2.329903, 48.900306], [2.32946, 48.898994], [2.329092, 48.897936], [2.329056, 48.897832], [2.32901, 48.8977], [2.328985, 48.897628], [2.328977, 48.897605], [2.328291, 48.895559], [2.327443, 48.893055], [2.327285, 48.89258], [2.326873, 48.891351], [2.326616, 48.890583], [2.326282, 48.889606], [2.325914, 48.888533], [2.325754, 48.888021], [2.325679, 48.887782], [2.325617, 48.887582], [2.32559, 48.887497], [2.326357, 48.885831], [2.326784, 48.884913], [2.32739, 48.883608], [2.327429, 48.883522], [2.327559, 48.883549], [2.327735, 48.883587], [2.327837, 48.883608], [2.32814, 48.883708], [2.328353, 48.883846], [2.328519, 48.883954], [2.32913, 48.884351], [2.329204, 48.884398], [2.329261, 48.884435], [2.329443, 48.884553], [2.329708, 48.884491], [2.330471, 48.884312], [2.330555, 48.884292], [2.332122, 48.883925], [2.332442, 48.88385], [2.332473, 48.88384], [2.3325, 48.883831], [2.332601, 48.883798], [2.332686, 48.88377], [2.332845, 48.883723], [2.334888, 48.883113], [2.334974, 48.883087], [2.336954, 48.882495], [2.33705, 48.882467], [2.337149, 48.882439], [2.337199, 48.882425], [2.337303, 48.882396], [2.337304, 48.882395], [2.337824, 48.882308], [2.337888, 48.882299], [2.338049, 48.882276], [2.339499, 48.88207], [2.339586, 48.882057], [2.339598, 48.882055], [2.339678, 48.882044], [2.339777, 48.882029], [2.339816, 48.882024], [2.341575, 48.882368], [2.341889, 48.882429], [2.341989, 48.882448], [2.343904, 48.882823], [2.344437, 48.882931], [2.344447, 48.882933], [2.344515, 48.882946], [2.34663, 48.883358], [2.346656, 48.883363], [2.346661, 48.883364], [2.346775, 48.883386], [2.34695, 48.883421], [2.347001, 48.883427], [2.347134, 48.883443], [2.347241, 48.883455], [2.348816, 48.883643], [2.349337, 48.883705], [2.349506, 48.883725], [2.349475, 48.883802], [2.349492, 48.884479], [2.349512, 48.885327], [2.350106, 48.885981], [2.350741, 48.886701], [2.350999, 48.887165], [2.351088, 48.887338], [2.351371, 48.887959], [2.351429, 48.888096], [2.351571, 48.888369], [2.351632, 48.889034], [2.351635, 48.889157], [2.351451, 48.890428]]]]}}, {"type": "Feature", "properties": {"name": "Invalides", "color": "#8A6F3A", "description": "Los Inválidos con la tumba de Napoleón y el Museo de Orsay, a orillas del Sena."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.314512, 48.851833], [2.319034, 48.851696], [2.319571, 48.850525], [2.320541, 48.84842], [2.322134, 48.84925], [2.322898, 48.849635], [2.323287, 48.849826], [2.32414, 48.85023], [2.325274, 48.850697], [2.326639, 48.851262], [2.326866, 48.851408], [2.327193, 48.851625], [2.328419, 48.851825], [2.32931, 48.852614], [2.329378, 48.852735], [2.330433, 48.854417], [2.330458, 48.85446], [2.330701, 48.854964], [2.330841, 48.855199], [2.331146, 48.855623], [2.331673, 48.856314], [2.33275, 48.857631], [2.333243, 48.858236], [2.333249, 48.858243], [2.333266, 48.858265], [2.332446, 48.858509], [2.33291, 48.85935], [2.329909, 48.860132], [2.329904, 48.860133], [2.329856, 48.86015], [2.329815, 48.860165], [2.329524, 48.860268], [2.328327, 48.860731], [2.328312, 48.860737], [2.327068, 48.861146], [2.326102, 48.861478], [2.32528, 48.861717], [2.325237, 48.86173], [2.325231, 48.861732], [2.324736, 48.861886], [2.320941, 48.863046], [2.320903, 48.863057], [2.320902, 48.863058], [2.320317, 48.863243], [2.320316, 48.863243], [2.319865, 48.863386], [2.319776, 48.863415], [2.319516, 48.863497], [2.319427, 48.863525], [2.318742, 48.863743], [2.318675, 48.863758], [2.318607, 48.86377], [2.318539, 48.863776], [2.318473, 48.863777], [2.316406, 48.863731], [2.31529, 48.863711], [2.315289, 48.863711], [2.310386, 48.863627], [2.310433, 48.862783], [2.31028, 48.861122], [2.310176, 48.859939], [2.310008, 48.858069], [2.309929, 48.857243], [2.309544, 48.853956], [2.312142, 48.853823], [2.314731, 48.853692], [2.314512, 48.851833]]]]}}, {"type": "Feature", "properties": {"name": "Les Halles", "color": "#2A3A7A", "description": "El antiguo 'vientre de París', hoy centro comercial, junto al Pompidou y la iglesia de Saint-Eustache."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.348165, 48.858534], [2.34822, 48.858516], [2.348208, 48.858495], [2.347565, 48.857349], [2.347519, 48.857312], [2.347518, 48.857312], [2.347299, 48.857215], [2.347184, 48.857164], [2.347184, 48.857163], [2.347053, 48.857079], [2.346986, 48.857009], [2.346803, 48.856708], [2.348675, 48.856148], [2.349907, 48.855765], [2.352492, 48.854667], [2.352623, 48.854908], [2.352625, 48.854911], [2.352674, 48.854999], [2.352688, 48.855025], [2.352696, 48.855041], [2.352728, 48.855098], [2.35274, 48.85512], [2.352768, 48.855172], [2.352809, 48.855246], [2.352829, 48.855284], [2.353192, 48.855946], [2.353701, 48.856873], [2.353949, 48.857023], [2.35418, 48.85745], [2.355268, 48.858504], [2.356862, 48.86008], [2.353473, 48.861218], [2.353341, 48.861273], [2.351652, 48.861651], [2.350156, 48.861991], [2.350215, 48.862095], [2.350948, 48.863403], [2.350949, 48.863406], [2.346676, 48.864431], [2.346675, 48.864431], [2.345102, 48.864809], [2.341271, 48.865728], [2.341268, 48.865728], [2.341205, 48.865744], [2.341178, 48.86575], [2.341178, 48.865749], [2.34116, 48.865727], [2.341136, 48.865691], [2.341136, 48.86569], [2.341113, 48.865658], [2.340266, 48.864473], [2.339878, 48.863756], [2.339769, 48.863539], [2.339577, 48.863157], [2.339184, 48.862218], [2.339466, 48.862135], [2.339123, 48.861478], [2.340826, 48.860908], [2.343969, 48.859891], [2.34397, 48.85989], [2.344786, 48.859626], [2.348165, 48.858534]]]]}}, {"type": "Feature", "properties": {"name": "Le Marais", "color": "#246384", "description": "El barrio histórico y de moda: callejuelas medievales, boutiques, la Place des Vosges y el mejor falafel."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.36848, 48.855831], [2.368512, 48.855734], [2.36445, 48.856409], [2.364304, 48.856455], [2.363765, 48.855676], [2.362943, 48.854564], [2.362731, 48.854644], [2.362358, 48.854249], [2.362054, 48.853868], [2.361874, 48.853651], [2.361727, 48.853489], [2.361542, 48.853353], [2.360977, 48.852819], [2.360438, 48.852379], [2.360277, 48.852435], [2.360227, 48.852377], [2.360194, 48.852338], [2.360176, 48.852317], [2.360173, 48.852313], [2.360127, 48.852259], [2.360114, 48.852243], [2.360107, 48.852234], [2.360349, 48.852148], [2.360312, 48.852103], [2.3603, 48.852089], [2.360269, 48.85205], [2.360044, 48.851774], [2.359699, 48.851927], [2.358733, 48.852303], [2.357343, 48.852773], [2.355293, 48.853472], [2.352492, 48.854667], [2.352623, 48.854908], [2.352625, 48.854911], [2.352674, 48.854999], [2.352688, 48.855025], [2.352696, 48.855041], [2.352728, 48.855098], [2.35274, 48.85512], [2.352768, 48.855172], [2.352809, 48.855246], [2.352829, 48.855284], [2.353192, 48.855946], [2.353701, 48.856873], [2.353949, 48.857023], [2.35418, 48.85745], [2.355268, 48.858504], [2.356862, 48.86008], [2.353473, 48.861218], [2.353341, 48.861273], [2.351652, 48.861651], [2.350156, 48.861991], [2.350215, 48.862095], [2.350948, 48.863403], [2.350949, 48.863406], [2.351518, 48.864426], [2.351974, 48.86524], [2.35253, 48.866232], [2.352975, 48.867032], [2.354261, 48.86933], [2.355851, 48.868965], [2.356122, 48.868903], [2.356376, 48.868853], [2.357277, 48.868712], [2.359012, 48.868455], [2.359661, 48.868362], [2.362346, 48.867973], [2.362609, 48.867937], [2.362836, 48.867905], [2.36295, 48.867888], [2.363097, 48.867867], [2.363191, 48.867853], [2.363265, 48.867843], [2.363341, 48.867794], [2.363421, 48.867747], [2.363587, 48.867648], [2.363696, 48.867583], [2.363749, 48.867552], [2.36375, 48.867551], [2.363761, 48.867544], [2.363767, 48.867541], [2.363828, 48.867504], [2.363889, 48.867468], [2.363895, 48.867464], [2.363906, 48.867458], [2.36396, 48.867426], [2.364051, 48.867372], [2.364136, 48.867321], [2.364196, 48.867285], [2.364231, 48.867265], [2.364249, 48.867254], [2.364262, 48.867231], [2.364318, 48.86714], [2.364379, 48.867038], [2.364438, 48.86694], [2.364454, 48.866914], [2.36449, 48.866854], [2.364499, 48.866838], [2.3645, 48.866838], [2.364517, 48.866808], [2.364545, 48.866763], [2.364675, 48.866547], [2.364736, 48.866445], [2.364751, 48.866419], [2.365406, 48.86533], [2.3658, 48.864672], [2.365835, 48.864613], [2.365836, 48.864612], [2.366703, 48.86317], [2.366718, 48.863139], [2.366735, 48.8631], [2.366752, 48.86306], [2.366765, 48.863019], [2.366901, 48.862457], [2.367101, 48.861628], [2.367265, 48.860949], [2.367466, 48.8601], [2.36762, 48.859458], [2.368069, 48.857587], [2.368227, 48.856924], [2.368228, 48.856922], [2.36848, 48.855831]]]]}}, {"type": "Feature", "properties": {"name": "Bastille", "color": "#C0651D", "description": "La plaza de la Bastilla y la Ópera Bastille, con el animado Faubourg Saint-Antoine y sus mercados."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.368512, 48.855734], [2.369003, 48.853741], [2.369103, 48.853311], [2.369106, 48.853301], [2.369107, 48.853296], [2.369114, 48.853265], [2.36913, 48.853197], [2.369135, 48.853176], [2.369138, 48.853163], [2.369337, 48.853179], [2.370281, 48.853257], [2.370298, 48.853257], [2.370307, 48.853257], [2.370316, 48.853256], [2.370317, 48.853256], [2.370351, 48.853251], [2.370374, 48.853244], [2.370377, 48.853243], [2.370382, 48.853241], [2.37039, 48.853238], [2.370405, 48.853232], [2.370914, 48.852906], [2.371299, 48.852684], [2.371364, 48.852649], [2.371405, 48.852629], [2.371444, 48.852609], [2.371512, 48.852577], [2.371739, 48.852479], [2.371819, 48.852448], [2.371853, 48.852436], [2.371887, 48.852424], [2.371969, 48.852396], [2.373552, 48.851931], [2.373787, 48.851865], [2.37485, 48.851604], [2.377773, 48.850885], [2.37851, 48.850706], [2.378818, 48.85063], [2.379397, 48.850551], [2.38012, 48.850451], [2.381575, 48.850385], [2.383779, 48.850213], [2.384343, 48.850132], [2.383985, 48.848164], [2.383775, 48.847009], [2.383382, 48.844853], [2.383374, 48.844853], [2.383178, 48.844841], [2.383002, 48.84483], [2.378603, 48.84318], [2.378533, 48.843151], [2.377985, 48.842904], [2.377909, 48.84287], [2.377815, 48.842827], [2.377309, 48.842599], [2.377246, 48.84257], [2.377165, 48.842534], [2.377102, 48.842506], [2.376757, 48.84235], [2.376521, 48.842244], [2.376363, 48.842164], [2.376357, 48.842161], [2.376324, 48.842145], [2.373809, 48.840875], [2.373777, 48.840859], [2.373429, 48.840684], [2.373205, 48.84057], [2.372414, 48.840171], [2.37212, 48.840394], [2.370576, 48.841528], [2.369182, 48.842551], [2.368463, 48.843094], [2.366029, 48.84493], [2.364836, 48.845844], [2.364433, 48.84614], [2.362493, 48.847622], [2.361892, 48.847992], [2.361515, 48.848232], [2.361314, 48.84858], [2.361065, 48.849021], [2.360872, 48.849359], [2.360832, 48.849436], [2.360753, 48.849604], [2.360685, 48.849774], [2.360611, 48.850015], [2.360541, 48.850317], [2.360511, 48.85049], [2.360505, 48.850664], [2.360521, 48.850997], [2.360514, 48.851079], [2.360505, 48.851139], [2.360492, 48.851196], [2.360476, 48.851256], [2.360457, 48.851309], [2.360438, 48.851361], [2.360416, 48.851413], [2.360388, 48.851461], [2.360359, 48.851501], [2.360334, 48.851539], [2.360302, 48.85157], [2.360264, 48.851612], [2.360213, 48.851656], [2.360154, 48.851705], [2.360044, 48.851774], [2.360269, 48.85205], [2.3603, 48.852089], [2.360312, 48.852103], [2.360349, 48.852148], [2.360107, 48.852234], [2.360114, 48.852243], [2.360127, 48.852259], [2.360173, 48.852313], [2.360176, 48.852317], [2.360194, 48.852338], [2.360227, 48.852377], [2.360277, 48.852435], [2.360438, 48.852379], [2.360977, 48.852819], [2.361542, 48.853353], [2.361727, 48.853489], [2.361874, 48.853651], [2.362054, 48.853868], [2.362358, 48.854249], [2.362731, 48.854644], [2.362943, 48.854564], [2.363765, 48.855676], [2.364304, 48.856455], [2.36445, 48.856409], [2.368512, 48.855734]]]]}}, {"type": "Feature", "properties": {"name": "Islas · Cité y Saint-Louis", "color": "#723088", "description": "El origen de París: Notre-Dame, la Santa Capilla y la tranquila Isla Saint-Louis con sus heladerías."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.361314, 48.84858], [2.361515, 48.848232], [2.360799, 48.848632], [2.360798, 48.848633], [2.359816, 48.849182], [2.359693, 48.849244], [2.359569, 48.849305], [2.359351, 48.849404], [2.359175, 48.849479], [2.358873, 48.849594], [2.358545, 48.849709], [2.35833, 48.849778], [2.35825, 48.849804], [2.358148, 48.849839], [2.358057, 48.849866], [2.357998, 48.849885], [2.355649, 48.850642], [2.355599, 48.850658], [2.355512, 48.850686], [2.355348, 48.850735], [2.353706, 48.851221], [2.353185, 48.8513], [2.352516, 48.85139], [2.351601, 48.851594], [2.350223, 48.851947], [2.350043, 48.852], [2.34998, 48.852021], [2.349907, 48.852045], [2.349874, 48.852057], [2.349641, 48.85214], [2.349382, 48.852241], [2.34926, 48.852292], [2.34847, 48.852612], [2.346947, 48.853294], [2.346872, 48.853319], [2.346819, 48.853335], [2.344786, 48.853987], [2.344702, 48.854013], [2.344593, 48.854049], [2.344593, 48.85405], [2.34587, 48.855277], [2.345901, 48.855314], [2.345975, 48.855417], [2.345976, 48.855418], [2.346104, 48.855587], [2.346803, 48.856708], [2.348675, 48.856148], [2.349907, 48.855765], [2.352492, 48.854667], [2.355293, 48.853472], [2.357343, 48.852773], [2.358733, 48.852303], [2.359699, 48.851927], [2.360044, 48.851774], [2.360154, 48.851705], [2.360213, 48.851656], [2.360264, 48.851612], [2.360302, 48.85157], [2.360334, 48.851539], [2.360359, 48.851501], [2.360388, 48.851461], [2.360416, 48.851413], [2.360438, 48.851361], [2.360457, 48.851309], [2.360476, 48.851256], [2.360492, 48.851196], [2.360505, 48.851139], [2.360514, 48.851079], [2.360521, 48.850997], [2.360505, 48.850664], [2.360511, 48.85049], [2.360541, 48.850317], [2.360611, 48.850015], [2.360685, 48.849774], [2.360753, 48.849604], [2.360832, 48.849436], [2.360872, 48.849359], [2.361065, 48.849021], [2.361314, 48.84858]]]]}}, {"type": "Feature", "properties": {"name": "Saint Germain", "color": "#366A2A", "description": "El París chic e intelectual: cafés legendarios (Flore, Les Deux Magots) y el Jardín de Luxemburgo."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.331583, 48.852394], [2.332017, 48.852477], [2.331906, 48.851398], [2.332022, 48.851382], [2.3318, 48.850262], [2.331654, 48.848419], [2.331575, 48.847055], [2.331497, 48.845791], [2.336123, 48.841011], [2.336159, 48.840977], [2.336195, 48.840947], [2.33623, 48.84092], [2.336263, 48.840896], [2.336304, 48.840871], [2.336344, 48.840846], [2.336381, 48.840825], [2.336388, 48.840821], [2.336435, 48.840798], [2.336438, 48.840797], [2.336482, 48.840778], [2.336526, 48.840762], [2.336575, 48.840744], [2.336637, 48.840727], [2.336692, 48.840715], [2.336748, 48.840705], [2.336789, 48.840703], [2.336843, 48.8407], [2.336902, 48.840701], [2.336936, 48.840705], [2.336959, 48.840708], [2.337015, 48.840721], [2.337068, 48.840739], [2.337116, 48.84076], [2.337157, 48.840785], [2.337193, 48.84081], [2.337235, 48.840845], [2.33727, 48.840881], [2.337304, 48.840926], [2.337765, 48.841746], [2.337765, 48.841747], [2.338176, 48.8425], [2.338974, 48.843956], [2.340255, 48.84628], [2.340256, 48.84628], [2.340499, 48.846712], [2.340838, 48.847344], [2.340838, 48.847345], [2.340925, 48.847484], [2.341472, 48.848369], [2.342652, 48.850307], [2.342678, 48.850358], [2.343169, 48.851389], [2.343828, 48.852769], [2.344284, 48.85375], [2.344593, 48.854049], [2.342857, 48.854863], [2.342805, 48.854897], [2.342682, 48.854983], [2.341938, 48.855626], [2.340855, 48.856563], [2.340478, 48.856772], [2.340382, 48.856825], [2.340366, 48.856834], [2.337547, 48.858389], [2.336609, 48.858583], [2.33291, 48.85935], [2.332446, 48.858509], [2.333266, 48.858265], [2.333249, 48.858243], [2.333243, 48.858236], [2.33275, 48.857631], [2.331673, 48.856314], [2.331146, 48.855623], [2.330841, 48.855199], [2.330701, 48.854964], [2.330458, 48.85446], [2.330433, 48.854417], [2.329378, 48.852735], [2.32931, 48.852614], [2.328419, 48.851825], [2.329539, 48.852015], [2.330325, 48.852185], [2.331583, 48.852394]]]]}}, {"type": "Feature", "properties": {"name": "Montparnasse", "color": "#3E8A5B", "description": "Barrio bohemio del siglo XX, con su torre mirador y las Catacumbas de París."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.341267, 48.833118], [2.341585, 48.834814], [2.341892, 48.836828], [2.341894, 48.836841], [2.342071, 48.838364], [2.33974, 48.838854], [2.339691, 48.838865], [2.336729, 48.839653], [2.336729, 48.839654], [2.333807, 48.840609], [2.333806, 48.840609], [2.331077, 48.841512], [2.330451, 48.841719], [2.329824, 48.841926], [2.327112, 48.842823], [2.326381, 48.843061], [2.324712, 48.843615], [2.32257, 48.84189], [2.321602, 48.841102], [2.321491, 48.841009], [2.321837, 48.840168], [2.321897, 48.840022], [2.321946, 48.839901], [2.322644, 48.838201], [2.322816, 48.837781], [2.323206, 48.836818], [2.323447, 48.836228], [2.324, 48.836034], [2.324758, 48.835756], [2.326856, 48.834976], [2.32581, 48.83356], [2.325213, 48.832757], [2.324425, 48.83163], [2.324016, 48.831028], [2.323504, 48.830297], [2.323133, 48.829867], [2.322652, 48.829299], [2.322133, 48.828673], [2.321001, 48.827594], [2.320206, 48.826837], [2.319585, 48.82617], [2.318314, 48.824806], [2.319335, 48.824577], [2.319338, 48.824577], [2.317011, 48.823552], [2.314519, 48.822461], [2.314473, 48.822437], [2.314463, 48.822432], [2.314453, 48.822427], [2.314241, 48.822316], [2.314158, 48.822264], [2.314486, 48.822191], [2.314515, 48.822185], [2.314555, 48.822176], [2.314686, 48.822147], [2.315591, 48.821945], [2.31741, 48.821542], [2.319572, 48.821063], [2.319637, 48.821048], [2.319959, 48.820977], [2.320386, 48.820882], [2.325374, 48.819771], [2.32561, 48.819718], [2.325634, 48.819712], [2.32585, 48.819664], [2.326712, 48.81947], [2.326906, 48.819427], [2.329193, 48.818913], [2.329267, 48.818896], [2.329303, 48.81901], [2.329313, 48.81904], [2.329437, 48.819427], [2.329453, 48.819478], [2.329921, 48.820939], [2.330009, 48.821193], [2.330269, 48.821944], [2.330855, 48.823635], [2.331587, 48.825651], [2.332406, 48.827514], [2.332794, 48.828247], [2.333943, 48.829933], [2.333975, 48.829981], [2.334021, 48.830048], [2.334062, 48.830108], [2.334447, 48.830686], [2.334464, 48.830713], [2.334508, 48.83078], [2.334524, 48.830804], [2.334649, 48.830995], [2.335411, 48.832159], [2.335698, 48.832601], [2.336089, 48.833179], [2.336187, 48.83315], [2.336443, 48.83308], [2.336444, 48.833079], [2.33657, 48.833045], [2.337642, 48.832752], [2.337675, 48.832743], [2.339519, 48.832238], [2.339904, 48.832133], [2.340902, 48.831859], [2.341149, 48.83179], [2.341146, 48.832163], [2.341142, 48.832348], [2.341142, 48.832492], [2.341267, 48.833118]]]]}}, {"type": "Feature", "properties": {"name": "Barrio Latino", "color": "#AB9856", "description": "El corazón estudiantil: la Sorbona, el Panteón y calles animadas llenas de historia."}, "geometry": {"type": "MultiPolygon", "coordinates": [[[[2.340838, 48.847344], [2.340838, 48.847345], [2.340925, 48.847484], [2.341472, 48.848369], [2.342652, 48.850307], [2.342678, 48.850358], [2.343169, 48.851389], [2.343828, 48.852769], [2.344284, 48.85375], [2.344593, 48.854049], [2.344702, 48.854013], [2.344786, 48.853987], [2.346819, 48.853335], [2.346872, 48.853319], [2.346947, 48.853294], [2.34847, 48.852612], [2.34926, 48.852292], [2.349382, 48.852241], [2.349641, 48.85214], [2.349874, 48.852057], [2.349907, 48.852045], [2.34998, 48.852021], [2.350043, 48.852], [2.350223, 48.851947], [2.351601, 48.851594], [2.352516, 48.85139], [2.353185, 48.8513], [2.353706, 48.851221], [2.355348, 48.850735], [2.355512, 48.850686], [2.355599, 48.850658], [2.355649, 48.850642], [2.357998, 48.849885], [2.358057, 48.849866], [2.358148, 48.849839], [2.35825, 48.849804], [2.35833, 48.849778], [2.358545, 48.849709], [2.358873, 48.849594], [2.359175, 48.849479], [2.359351, 48.849404], [2.359569, 48.849305], [2.359693, 48.849244], [2.359816, 48.849182], [2.360798, 48.848633], [2.360799, 48.848632], [2.361515, 48.848232], [2.361892, 48.847992], [2.362493, 48.847622], [2.36176, 48.84725], [2.361216, 48.846974], [2.361185, 48.846958], [2.361135, 48.846932], [2.361095, 48.846912], [2.35833, 48.845508], [2.354922, 48.84378], [2.354917, 48.843645], [2.352757, 48.843694], [2.349643, 48.844393], [2.349488, 48.84444], [2.349337, 48.844487], [2.349245, 48.844516], [2.349557, 48.843183], [2.349771, 48.842291], [2.349619, 48.841322], [2.349638, 48.841037], [2.349753, 48.840347], [2.349793, 48.839985], [2.349777, 48.839774], [2.349833, 48.839474], [2.349894, 48.839302], [2.349954, 48.839127], [2.3498, 48.838804], [2.348986, 48.837087], [2.347197, 48.837292], [2.347076, 48.83731], [2.347003, 48.837321], [2.344468, 48.837859], [2.342071, 48.838364], [2.33974, 48.838854], [2.339691, 48.838865], [2.336729, 48.839653], [2.336757, 48.840131], [2.336769, 48.840352], [2.336781, 48.840552], [2.336789, 48.840703], [2.336843, 48.8407], [2.336902, 48.840701], [2.336936, 48.840705], [2.336959, 48.840708], [2.337015, 48.840721], [2.337068, 48.840739], [2.337116, 48.84076], [2.337157, 48.840785], [2.337193, 48.84081], [2.337235, 48.840845], [2.33727, 48.840881], [2.337304, 48.840926], [2.337765, 48.841746], [2.337765, 48.841747], [2.338176, 48.8425], [2.338974, 48.843956], [2.340255, 48.84628], [2.340256, 48.84628], [2.340499, 48.846712], [2.340838, 48.847344]]]]}}]};
+  var map = L.map('zonemap', {scrollWheelZoom:true}).setView([48.857, 2.343], 12);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {maxZoom:19, subdomains:'abcd', attribution:'&copy; OpenStreetMap &copy; CARTO'}).addTo(map);
+  function zstyle(f){ return {fillColor:f.properties.color, color:'#ffffff', weight:1.5, opacity:0.9, fillOpacity:0.5}; }
+  var layer = L.geoJSON(ZONES, {
+    style: zstyle,
+    onEachFeature: function(f, lyr){
+      var p = f.properties;
+      var html = '<div class="zpop"><div class="zbar" style="background:'+p.color+'"></div><b>'+p.name+'</b><br>'+p.description+'</div>';
+      lyr.bindPopup(html);
+      lyr.bindTooltip(p.name, {sticky:true});
+      lyr.on('mouseover', function(){ lyr.setStyle({weight:2.5, color:'#fff', opacity:1, fillOpacity:0.72}); lyr.bringToFront(); });
+      lyr.on('mouseout', function(){ layer.resetStyle(lyr); });
+    }
+  }).addTo(map);
+  map.fitBounds(layer.getBounds(), {padding:[8,8]});
+})();
+(function(){
+  var b=function(t,bg,fg){return '<span style="display:inline-block;padding:1px 6px;border-radius:3px;background:'+bg+';color:'+(fg||'#fff')+';font-size:11px;font-weight:700;margin:1px 2px">'+t+'</span>';};
+  var stops=[
+    {nm:'Nation',                          ll:[48.8484,2.3967], c:'#1a3a6b', ln:b('L1','#FFCD00','#333')+b('L2','#003CA6')+b('L6','#6ECA97','#333')+b('RER A','#E2231A')},
+    {nm:'Châtelet – Les Halles',           ll:[48.8606,2.3476], c:'#1a3a6b', ln:b('L1','#FFCD00','#333')+b('L4','#CF009E')+b('L7','#F28E42','#333')+b('L11','#8D5E2A')+b('L14','#62259D')+'<br>'+b('RER A','#E2231A')+b('RER B','#4BB4E6','#333')+b('RER D','#00A550')},
+    {nm:'Charles de Gaulle – Étoile',      ll:[48.8742,2.2950], c:'#1a3a6b', ln:b('L1','#FFCD00','#333')+b('L2','#003CA6')+b('L6','#6ECA97','#333')+b('RER A','#E2231A')},
+    {nm:'Gare de Lyon',                    ll:[48.8449,2.3741], c:'#1a3a6b', ln:b('L1','#FFCD00','#333')+b('L14','#62259D')+b('RER A','#E2231A')+b('RER D','#00A550')},
+    {nm:'Montparnasse – Bienvenüe',        ll:[48.8421,2.3211], c:'#1a3a6b', ln:b('L4','#CF009E')+b('L6','#6ECA97','#333')+b('L12','#007852')+b('L13','#6EC4E8','#333')},
+    {nm:'Saint-Lazare',                    ll:[48.8756,2.3249], c:'#1a3a6b', ln:b('L3','#837902')+b('L9','#B9D400','#333')+b('L12','#007852')+b('L13','#6EC4E8','#333')+b('L14','#62259D')+b('RER E','#BB4B8B')},
+    {nm:'Opéra',                           ll:[48.8699,2.3316], c:'#7A5500', ln:b('L3','#837902')+b('L7','#F28E42','#333')+b('L8','#C9A0DC','#333')},
+    {nm:'République',                      ll:[48.8674,2.3638], c:'#7A5500', ln:b('L3','#837902')+b('L5','#FF7F00')+b('L8','#C9A0DC','#333')+b('L9','#B9D400','#333')+b('L11','#8D5E2A')},
+    {nm:'Palais Royal – Musée du Louvre',  ll:[48.8637,2.3367], c:'#C8A200', ln:b('L1','#FFCD00','#333')+b('L7','#F28E42','#333')},
+    {nm:'Tuileries',                       ll:[48.8637,2.3267], c:'#C8A200', ln:b('L1','#FFCD00','#333')},
+    {nm:'Concorde',                        ll:[48.8657,2.3211], c:'#C8A200', ln:b('L1','#FFCD00','#333')+b('L8','#C9A0DC','#333')+b('L12','#007852')},
+    {nm:'Franklin D. Roosevelt',           ll:[48.8686,2.3098], c:'#C8A200', ln:b('L1','#FFCD00','#333')+b('L9','#B9D400','#333')},
+    {nm:'Bastille',                        ll:[48.8531,2.3693], c:'#C8A200', ln:b('L1','#FFCD00','#333')+b('L5','#FF7F00')+b('L8','#C9A0DC','#333')},
+    {nm:'Barbès-Rochechouart',             ll:[48.8838,2.3499], c:'#003CA6', ln:b('L2','#003CA6')+b('L4','#CF009E')},
+    {nm:'Anvers',                          ll:[48.8847,2.3441], c:'#003CA6', ln:b('L2','#003CA6')},
+    {nm:'Abbesses',                        ll:[48.8843,2.3384], c:'#007852', ln:b('L12','#007852')},
+    {nm:'Cité',                            ll:[48.8543,2.3470], c:'#CF009E', ln:b('L4','#CF009E')},
+    {nm:'Saint-Michel – Notre-Dame',       ll:[48.8525,2.3464], c:'#2980B9', ln:b('RER B','#4BB4E6','#333')+b('RER C','#FFCD00','#333')},
+    {nm:'Denfert-Rochereau',               ll:[48.8341,2.3323], c:'#1a3a6b', ln:b('L4','#CF009E')+b('L6','#6ECA97','#333')+b('RER B','#4BB4E6','#333')},
+    {nm:'Trocadéro',                       ll:[48.8631,2.2884], c:'#2A8A52', ln:b('L6','#6ECA97','#333')+b('L9','#B9D400','#333')},
+    {nm:'Bir-Hakeim',                      ll:[48.8541,2.2895], c:'#2A8A52', ln:b('L6','#6ECA97','#333')+b('RER C','#FFCD00','#333')},
+    {nm:'Marne-la-Vallée–Chessy (Disney)', ll:[48.8683,2.7802], c:'#E2231A', ln:b('RER A','#E2231A')+' TGV · Disneyland Paris'},
+  ];
+  var tmap=L.map('transmap',{scrollWheelZoom:true}).setView([48.858,2.345],13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© <a href="https://openstreetmap.org">OpenStreetMap</a>'}).addTo(tmap);
+  stops.forEach(function(s){
+    var icon=L.divIcon({className:'',html:'<div style="width:13px;height:13px;border-radius:50%;background:'+s.c+';border:2.5px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.5)"></div>',iconSize:[13,13],iconAnchor:[6,6]});
+    L.marker(s.ll,{icon:icon}).addTo(tmap).bindPopup('<div style="min-width:170px;line-height:1.9"><b style="font-size:13px">'+s.nm+'</b><div style="margin-top:5px">'+s.ln+'</div></div>');
+  });
+})();
+</script>
+</body>
+</html>
